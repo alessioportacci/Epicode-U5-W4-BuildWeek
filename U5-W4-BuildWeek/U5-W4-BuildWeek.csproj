@@ -127,6 +127,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AnimaliController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MedicinaliController.cs" />
     <Compile Include="Controllers\RicoveriController.cs" />
@@ -216,15 +217,14 @@
     <Content Include="Views\Admin\Details.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Ricoveri\Index.cshtml" />
-    <Content Include="Views\Home\RegistraAnimale.cshtml" />
-    <Content Include="Views\Home\ModificaAnimale.cshtml" />
-    <Content Include="Views\Home\DettaglioAnimale.cshtml" />
-    <Content Include="Views\Home\Rimborsi.cshtml" />
+    <Content Include="Views\Animali\RegistraAnimale.cshtml" />
+    <Content Include="Views\Animali\ModificaAnimale.cshtml" />
+    <Content Include="Views\Animali\DettaglioAnimale.cshtml" />
+    <Content Include="Views\Ricoveri\Rimborsi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\img\FotoAnimali\" />
-    <Folder Include="Views\ContattaciModel\" />
     <Folder Include="Views\RoleManager\" />
   </ItemGroup>
   <ItemGroup>

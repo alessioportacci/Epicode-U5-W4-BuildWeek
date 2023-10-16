@@ -100,19 +100,13 @@ namespace U5_W4_BuildWeek.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+
+        public JsonResult Rimborsi()
+        {
+            var ricoveriAttivi = db.Ricoveri.Where(o => o.Attivo == true);
+            return Json(ricoveriAttivi, JsonRequestBehavior.AllowGet);
         }
+
     }
 }
