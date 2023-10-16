@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Security.Policy;
 using System.Web;
@@ -11,8 +14,8 @@ namespace U5_W4_BuildWeek.Controllers
 {
     public class HomeController : Controller
     {
-
         ModelDbContext db = new ModelDbContext();
+
 
         public ActionResult Index()
         {
@@ -57,8 +60,8 @@ namespace U5_W4_BuildWeek.Controllers
                 return 0;
 
             return animale.Id;
-        }
-        
+        }    
+
 
         #region Login / Register
 
