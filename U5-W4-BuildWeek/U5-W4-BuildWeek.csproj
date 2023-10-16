@@ -135,6 +135,7 @@
       <DependentUpon>202310160925230_AggiornamentoUtenti.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ContattaciModel.cs" />
     <Compile Include="Models\DbModels\Animali.cs" />
     <Compile Include="Models\DbModels\AnimaliTipologia.cs" />
     <Compile Include="Models\DbModels\Ditte.cs" />
@@ -203,11 +204,13 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\CercaAnimale.cshtml" />
+    <Content Include="Views\Home\Contattaci.cshtml" />
     <Content Include="Views\Home\RegistraAnimale.cshtml" />
     <Content Include="Views\Home\ModificaAnimale.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ContattaciModel\" />
     <Folder Include="Views\RoleManager\" />
     <Folder Include="Content\img\FotoAnimali\" />
   </ItemGroup>

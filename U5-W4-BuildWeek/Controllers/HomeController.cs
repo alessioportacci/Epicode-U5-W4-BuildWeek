@@ -84,6 +84,30 @@ namespace U5_W4_BuildWeek.Controllers
         }
 
 
+        public ActionResult Contattaci()
+        {
+            return View();
+        }
+
+
+        public ActionResult CercaAnimale()
+        {
+            return View();
+        }
+
+        public int CercaAnimaleByChip(string Chip)
+        {
+            Animali animale = db.Animali.Where(a => a.Microchip == Chip).FirstOrDefault();
+
+            if (animale == null)
+                return 0;
+
+            return animale.Id;
+        }
+        
+
+        #region Login / Register
+
         public ActionResult Login()
         [HttpGet]
         public ActionResult ModificaAnimale(int id)
@@ -186,20 +210,7 @@ namespace U5_W4_BuildWeek.Controllers
             return RedirectToAction("Index");
         }
 
+        #endregion
 
-        public ActionResult CercaAnimale() 
-        {
-            return View();
-        }
-
-        public int CercaAnimaleByChip(string Chip)
-        {
-            Animali animale = db.Animali.Where(a => a.Microchip == Chip).FirstOrDefault();
-            
-            if (animale == null)
-                return 0;
-
-            return animale.Id;
-        }
     }
 }
