@@ -147,6 +147,7 @@
     <Compile Include="Models\DbModels\sysdiagrams.cs" />
     <Compile Include="Models\DbModels\Utenti.cs" />
     <Compile Include="Models\DbModels\Visite.cs" />
+    <Compile Include="Models\RicoveriModel.cs" />
     <Compile Include="Models\RoleManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
