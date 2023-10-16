@@ -127,6 +127,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\FarmaciaController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AnimaliController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MedicinaliController.cs" />
     <Compile Include="Controllers\RicoveriController.cs" />
@@ -228,6 +230,7 @@
     <Content Include="Views\Farmacia\Index.cshtml" />
     <Content Include="Views\Farmacia\Acquista.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Admin\Details.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Ricoveri\Index.cshtml" />

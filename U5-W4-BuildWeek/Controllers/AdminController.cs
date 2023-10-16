@@ -35,7 +35,7 @@ namespace U5_W4_BuildWeek.Controllers
             db.Entry(utente).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
 
-            return View(db.Utenti);
+            return RedirectToAction("index");
         }
 
 
