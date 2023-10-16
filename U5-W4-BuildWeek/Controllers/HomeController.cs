@@ -92,6 +92,24 @@ namespace U5_W4_BuildWeek.Controllers
 
         public ActionResult CercaAnimale()
         {
+            db.AnimaliTipologia.Add(new AnimaliTipologia
+            {
+                Tipologia = "Cane"
+            });
+
+
+            db.Animali.Add(new Animali
+            {
+                DataRegistrazione = DateTime.Now,
+                DataInizioRicovero = DateTime.Now,
+                Nome = "",
+                Foto = "0",
+                Colore = "0",
+                DataNascita = DateTime.Now,
+                Microchip = "0",
+                FkTipologia = 1,
+
+            });
             return View();
         }
 
