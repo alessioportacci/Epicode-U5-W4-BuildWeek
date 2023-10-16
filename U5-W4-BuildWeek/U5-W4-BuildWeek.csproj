@@ -126,6 +126,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\FarmaciaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MedicinaliController.cs" />
     <Compile Include="Global.asax.cs">
@@ -210,6 +211,10 @@
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\CercaAnimale.cshtml" />
     <Content Include="Views\Home\Contattaci.cshtml" />
+    <Content Include="Views\Medicinali\ListaDitte.cshtml" />
+    <Content Include="Views\Medicinali\ModificaDitta.cshtml" />
+    <Content Include="Views\Farmacia\Index.cshtml" />
+    <Content Include="Views\Farmacia\Acquista.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

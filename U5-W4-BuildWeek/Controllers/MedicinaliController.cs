@@ -33,19 +33,24 @@ namespace U5_W4_BuildWeek.Controllers
         {
             if (ModelState.IsValid)
             {
-           
                 if (db.Medicinali.Any(existing => existing.Posizione == m.Posizione))
                 {
                     ModelState.AddModelError("Posizione", "La Posizione inserita è già occupata.");
-                    return View();
+            
+                    ViewBag.DitteList = new SelectList(db.Ditte.ToList(), "Id", "Nome");
+                    return View(m); 
                 }
 
                 db.Medicinali.Add(m);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View();
+
+      
+            ViewBag.DitteList = new SelectList(db.Ditte.ToList(), "Id", "Nome");
+            return View(m);
         }
+
 
 
         //Modifica Medicinali
@@ -77,7 +82,9 @@ namespace U5_W4_BuildWeek.Controllers
                     if (db.Medicinali.Any(existing => existing.Posizione == m.Posizione))
                     {
                         ModelState.AddModelError("Posizione", "La Posizione inserita è già occupata.");
-                        return View();
+
+                        ViewBag.DitteList = new SelectList(db.Ditte.ToList(), "Id", "Nome");
+                        return View(m);
                     }
                     db.Entry(medicinale).State = EntityState.Modified;
 
@@ -91,6 +98,7 @@ namespace U5_W4_BuildWeek.Controllers
                     
                 }
             }
+            ViewBag.DitteList = new SelectList(db.Ditte.ToList(), "Id", "Nome");
             return View(m);
         }
 
@@ -104,6 +112,11 @@ namespace U5_W4_BuildWeek.Controllers
             return RedirectToAction("Index");
         }
 
+
+        public ActionResult ListaDitte()
+        {
+            return View(db.Ditte.ToList());
+        }
 
         //Creazione Ditta
         public ActionResult CreaDitta() 
@@ -126,5 +139,63 @@ namespace U5_W4_BuildWeek.Controllers
             }
             return View();
         }
+
+        public ActionResult ModificaDitta(int id )
+        {
+            var d = db.Ditte.Find(id);
+            return View(d);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public ActionResult ModificaDitta (Ditte d)
+        {
+
+            if (ModelState.IsValid)
+            {
+
+                var ditta = db.Ditte.Find(d.Id);
+                if (ditta != null)
+                {
+                    ditta.Nome = d.Nome;
+                    ditta.Recapito = d.Recapito;
+                    ditta.Indirizzo = d.Indirizzo;
+                    
+
+                    db.Entry(ditta).State = EntityState.Modified;
+
+
+                    db.SaveChanges();
+
+                    return RedirectToAction("ListaDitte");
+                }
+               
+            }
+            return View();
+        }
+
+        public ActionResult EliminaDitta(int id)
+        {
+            Ditte d = db.Ditte.Find(id);
+
+            if (d != null)
+            {
+               
+                var medicinaliAssociati = db.Medicinali.Where(m => m.FkDitta == d.Id).ToList();
+
+             
+                foreach (var m in medicinaliAssociati)
+                {
+                    db.Medicinali.Remove(m);
+                }
+
+                db.Ditte.Remove(d);
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("ListaDitte");
+        }
+
     }
 }
