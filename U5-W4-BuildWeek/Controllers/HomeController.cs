@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
@@ -160,6 +161,12 @@ namespace U5_W4_BuildWeek.Controllers
             return View(animale);
         }
 
+        public ActionResult DettaglioAnimale(int id)
+        {
+            var animale = db.Animali.Find(id);
+            return View(animale);
+        }
+
         public ActionResult EliminaAnimale(int id)
         {
             var animale = db.Animali.Find(id);
@@ -170,6 +177,13 @@ namespace U5_W4_BuildWeek.Controllers
                 db.SaveChanges();
             }
             return View("Index");
+        }
+
+        [HttpGet]
+        public JsonResult Rimborsi()
+        {
+            var ricoveriAttivi = db.Ricoveri.Where(o => o.Attivo == true);
+            return Json(ricoveriAttivi, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult About()
