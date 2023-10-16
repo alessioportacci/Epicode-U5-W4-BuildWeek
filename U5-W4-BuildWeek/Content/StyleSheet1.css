@@ -1,0 +1,17 @@
+﻿#sectionLogin .cascading-right {
+  margin-right: -50px;
+}
+@media (max-width: 991.98px) {
+  #sectionLogin .cascading-right {
+    margin-right: 0;
+  }
+}
+
+#sectionRegister .cascading-right {
+  margin-right: -50px;
+}
+@media (max-width: 991.98px) {
+  #sectionRegister .cascading-right {
+    margin-right: 0;
+  }
+}
