@@ -72,11 +72,10 @@ namespace U5_W4_BuildWeek.Controllers
             {
                 if (animale.FotoFile != null && animale.FotoFile.ContentLength > 0)
                 {
-                    var fileName = Path.GetFileName(animale.FotoFile.FileName);
-                    var path = Path.Combine(Server.MapPath("~/Content/img/"), fileName);
+                    var path = Path.Combine(Server.MapPath("~/Content/Imgs/Animali/"), animale.FotoFile.FileName);
                     animale.FotoFile.SaveAs(path);
 
-                    animale.Foto = fileName;
+                    animale.Foto = animale.FotoFile.FileName;
                 }
                 db.Entry(animale).State = EntityState.Modified;
                 db.SaveChanges();
