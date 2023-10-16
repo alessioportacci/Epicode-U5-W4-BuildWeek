@@ -126,9 +126,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\FarmaciaController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AnimaliController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MedicinaliController.cs" />
+    <Compile Include="Controllers\RicoveriController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -148,6 +151,7 @@
     <Compile Include="Models\DbModels\sysdiagrams.cs" />
     <Compile Include="Models\DbModels\Utenti.cs" />
     <Compile Include="Models\DbModels\Visite.cs" />
+    <Compile Include="Models\RicoveriModel.cs" />
     <Compile Include="Models\RoleManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -168,6 +172,12 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\StyleSheet1.css">
+      <DependentUpon>StyleSheet1.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\StyleSheet1.min.css">
+      <DependentUpon>StyleSheet1.css</DependentUpon>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -177,6 +187,11 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\StyleSheet1.scss" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
@@ -189,6 +204,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\MyScripts\HomeCercaAnimale.js" />
+    <Content Include="Scripts\MyScripts\RicoveriIndex.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -200,8 +216,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Medicinali\Index.cshtml" />
     <Content Include="Views\Medicinali\Modifica.cshtml" />
@@ -211,13 +225,23 @@
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\CercaAnimale.cshtml" />
     <Content Include="Views\Home\Contattaci.cshtml" />
+    <Content Include="Views\Medicinali\ListaDitte.cshtml" />
+    <Content Include="Views\Medicinali\ModificaDitta.cshtml" />
+    <Content Include="Views\Farmacia\Index.cshtml" />
+    <Content Include="Views\Farmacia\Acquista.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Admin\Details.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Ricoveri\Index.cshtml" />
+    <Content Include="Views\Animali\RegistraAnimale.cshtml" />
+    <Content Include="Views\Animali\ModificaAnimale.cshtml" />
+    <Content Include="Views\Animali\DettaglioAnimale.cshtml" />
+    <Content Include="Views\Ricoveri\Rimborsi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ContattaciModel\" />
+    <Folder Include="Content\Imgs\Animali\" />
     <Folder Include="Views\RoleManager\" />
   </ItemGroup>
   <ItemGroup>

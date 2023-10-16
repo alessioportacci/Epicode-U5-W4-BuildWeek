@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<button onclick="filtra()"> filtra </button>
+
+
+@foreach (U5_W4_BuildWeek.Models.DbModels.AnimaliTipologia razza in ViewBag.Tipologie)
+{
+    <input type="checkbox" id="@razza.Id" />
+    <label for="@razza.Id"> @razza.Tipologia</label>
+    <br>
+}
+
+
+<div id="agg"></div>
+
+@section scripts
+{
+    <script src="~/Scripts/MyScripts/RicoveriIndex.js"></script>
+}
+
