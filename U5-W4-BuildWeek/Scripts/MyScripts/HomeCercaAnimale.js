@@ -14,7 +14,7 @@
                     $("#not-found").removeClass("d-none")
                 else
                     //TODO: Aggiungere il link della pagina corretto
-                    window.open("Test/" + risultato)
+                    window.open("../Animali/DettaglioAnimale/" + risultato)
             },
             error: function (e) {
                 console.log(e)
