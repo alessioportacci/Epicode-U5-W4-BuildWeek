@@ -7,6 +7,8 @@
     <title>@ViewBag.Title - Applicazione ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="~/Content/StyleSheet1.css" rel="stylesheet" />
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
@@ -37,8 +39,8 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Applicazione ASP.NET</p>
+        <footer class="text-center">
+            <p>&copy; @DateTime.Now.Year - Team2 ASP.NET</p>
         </footer>
     </div>
 
