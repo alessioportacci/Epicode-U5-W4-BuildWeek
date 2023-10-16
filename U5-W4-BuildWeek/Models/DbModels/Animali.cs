@@ -5,6 +5,7 @@ namespace U5_W4_BuildWeek.Models.DbModels
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web;
 
     [Table("Animali")]
     public partial class Animali
@@ -28,6 +29,9 @@ namespace U5_W4_BuildWeek.Models.DbModels
 
         [StringLength(50)]
         public string Foto { get; set; }
+
+        [NotMapped]
+        public HttpPostedFileBase FotoFile { get; set; }
 
         [Required]
         [StringLength(50)]
