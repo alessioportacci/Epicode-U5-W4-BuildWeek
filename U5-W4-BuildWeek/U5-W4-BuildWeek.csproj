@@ -128,10 +128,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MedicinaliController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202310160925230_AggiornamentoUtenti.cs" />
+    <Compile Include="Migrations\202310160925230_AggiornamentoUtenti.designer.cs">
+      <DependentUpon>202310160925230_AggiornamentoUtenti.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ContattaciModel.cs" />
     <Compile Include="Models\DbModels\Animali.cs" />
     <Compile Include="Models\DbModels\AnimaliTipologia.cs" />
     <Compile Include="Models\DbModels\Ditte.cs" />
@@ -142,6 +148,7 @@
     <Compile Include="Models\DbModels\sysdiagrams.cs" />
     <Compile Include="Models\DbModels\Utenti.cs" />
     <Compile Include="Models\DbModels\Visite.cs" />
+    <Compile Include="Models\RoleManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +188,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\MyScripts\HomeCercaAnimale.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -195,12 +203,22 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Medicinali\Index.cshtml" />
+    <Content Include="Views\Medicinali\Modifica.cshtml" />
+    <Content Include="Views\Medicinali\create.cshtml" />
+    <Content Include="Views\Medicinali\CreaDitta.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Home\CercaAnimale.cshtml" />
+    <Content Include="Views\Home\Contattaci.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Details.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ContattaciModel\" />
+    <Folder Include="Views\RoleManager\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -228,6 +246,11 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202310160925230_AggiornamentoUtenti.resx">
+      <DependentUpon>202310160925230_AggiornamentoUtenti.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
