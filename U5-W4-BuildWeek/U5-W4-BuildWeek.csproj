@@ -224,7 +224,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\img\FotoAnimali\" />
+    <Folder Include="Content\Imgs\Animali\" />
     <Folder Include="Views\RoleManager\" />
   </ItemGroup>
   <ItemGroup>
