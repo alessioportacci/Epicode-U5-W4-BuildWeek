@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using U5_W4_BuildWeek.Models.DbModels;
 
 namespace U5_W4_BuildWeek.Controllers
@@ -81,6 +82,8 @@ namespace U5_W4_BuildWeek.Controllers
             return View();
         }
 
+
+        public ActionResult Login()
         [HttpGet]
         public ActionResult ModificaAnimale(int id)
         {
@@ -128,16 +131,58 @@ namespace U5_W4_BuildWeek.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        public ActionResult Contact()
+        [HttpPost]
+        public ActionResult Login([Bind(Include = "Username,Password")]Utenti utente)
         {
-            ViewBag.Message = "Your contact page.";
-
+            if( db.Utenti.Where(u => u.Username == utente.Username && u.Password == utente.Password).Count() > 0)
+            {
+                Session["IdUtente"] = utente.Id;
+                FormsAuthentication.SetAuthCookie(utente.Username, true);
+                return RedirectToAction("Index");
+            }
             return View();
+        }
+
+
+        public ActionResult Logout() 
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index");
+        }
+
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register([Bind(Exclude = "Ruolo")]Utenti utente)
+        {
+            if (db.Utenti.Where(u => u.Username == utente.Username).Count() > 0)
+            {
+                ViewBag.Errore = "Username già in uso da un altro utente";
+                return View();
+            }
+
+            db.Utenti.Add(new Utenti
+            {
+                Nome = utente.Nome,
+                CF = utente.CF,
+                Telefono = utente.Telefono,
+                Email = utente.Email,
+                Username = utente.Username,
+                Password = utente.Password,
+                Ruolo = "User",
+            });
+            db.SaveChanges();
+
+            Login(utente);
+
+            return RedirectToAction("Index");
         }
     }
 }
