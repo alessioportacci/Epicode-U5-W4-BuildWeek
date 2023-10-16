@@ -18,18 +18,27 @@ namespace U5_W4_BuildWeek.Models.DbModels
 
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Username obbligatorio")]
+        public string Username { get; set; }
+
+        [Required(ErrorMessage = "Inserire una password valida")]
+        public string Password { get; set; }
+
+        [Required(ErrorMessage = "Nome obbligatorio")]
         [StringLength(200)]
         public string Nome { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Codice fiscale obbligatorio")]
+        [Display(Name = "Codice Fiscale")]
         [StringLength(16)]
         public string CF { get; set; }
 
         [StringLength(13)]
+        [Display(Name = "Numero di telefono")]
         public string Telefono { get; set; }
 
         [StringLength(100)]
+        [Display(Name = "Indirizzo Email")]
         public string Email { get; set; }
 
         [Required]
