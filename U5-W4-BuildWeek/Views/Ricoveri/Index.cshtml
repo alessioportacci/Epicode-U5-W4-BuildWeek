@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<button onclick="filtra()"> filtra </button>
+
+<div id=""></div>
+
+<script>
+
+    function filtra(microchip) {
+        $.ajax
+            ({
+                method: 'GET',
+                url: "RicoveriFilter",
+                data:
+                {
+                    Tipologie: [1, 2]
+                },
+                success: function (risultato) {
+                    if (risultato == 0)
+                        $("#not-found").removeClass("d-none")
+                    else
+                        //TODO: Aggiungere il link della pagina corretto
+                        window.open("Test/" + risultato)
+                },
+                error: function (e) {
+                    console.log(e)
+                }
+            })
+    }
+
+</script>
