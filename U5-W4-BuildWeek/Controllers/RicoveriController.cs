@@ -22,7 +22,14 @@ namespace U5_W4_BuildWeek.Controllers
         public JsonResult RicoveriFilter(List<int> Tipologie)
         {
             List<RicoveriModel> ricoveri = new List<RicoveriModel>();
-            List<Animali> animaliList = db.Animali.Where(a => a.DataInizioRicovero != null && Tipologie.Contains(a.FkTipologia)).ToList();
+            List<Animali> animaliList = new List<Animali>();
+
+            //Nel caso restituisca una lista null
+            try
+            {
+                animaliList = db.Animali.Where(a => a.DataInizioRicovero != null && Tipologie.Contains(a.FkTipologia)).ToList();
+            }
+            catch { return Json(""); }
 
             if (animaliList.Count > 0)
                 foreach (Animali animale in animaliList)
@@ -41,8 +48,10 @@ namespace U5_W4_BuildWeek.Controllers
             return Json(ricoveri);
         }
 
+
         public ActionResult Details(int id)
         {
+
             return View();
         }
 
@@ -91,19 +100,13 @@ namespace U5_W4_BuildWeek.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+
+        public JsonResult Rimborsi()
+        {
+            var ricoveriAttivi = db.Ricoveri.Where(o => o.Attivo == true);
+            return Json(ricoveriAttivi, JsonRequestBehavior.AllowGet);
         }
+
     }
 }
