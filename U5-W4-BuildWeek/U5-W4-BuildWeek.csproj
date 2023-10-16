@@ -212,12 +212,14 @@
     <Content Include="Views\Home\Contattaci.cshtml" />
     <Content Include="Views\Home\RegistraAnimale.cshtml" />
     <Content Include="Views\Home\ModificaAnimale.cshtml" />
+    <Content Include="Views\Home\DettaglioAnimale.cshtml" />
+    <Content Include="Views\Home\Rimborsi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\img\FotoAnimali\" />
     <Folder Include="Views\ContattaciModel\" />
     <Folder Include="Views\RoleManager\" />
-    <Folder Include="Content\img\FotoAnimali\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
