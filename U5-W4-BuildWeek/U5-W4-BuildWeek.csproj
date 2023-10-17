@@ -242,6 +242,9 @@
     <Content Include="Views\Animali\DettaglioAnimale.cshtml" />
     <Content Include="Views\Ricoveri\Rimborsi.cshtml" />
     <Content Include="Views\Animali\Index.cshtml" />
+    <Content Include="Views\Medicinali\Cerca.cshtml" />
+    <Content Include="Views\Medicinali\Vendite.cshtml" />
+    <Content Include="Views\Medicinali\VenditePerCliente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
