@@ -259,10 +259,7 @@ namespace U5_W4_BuildWeek.Controllers
             return Json(risultati, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult VenditePerCliente()
-        {
-            return View();
-        }
+        
 
         public JsonResult RicercaCF(string Cf)
         {

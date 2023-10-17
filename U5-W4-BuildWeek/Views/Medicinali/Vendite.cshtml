@@ -3,25 +3,33 @@
 }
 <h2>Ricerca Vendite</h2>
 
-<div>
-    <input type="date" id="dataVendita" />
-    <button id="cercaVendite">Cerca Vendite</button>
+<div class="search-container">
+    <div>
+        <label for="dataVendita">Seleziona una data:</label>
+        <input type="date" id="dataVendita" />
+    </div>
+    <button id="cercaVendite" class="search-button">Cerca Vendite</button>
 </div>
 
-<div id="risultatiVendite">
+<div class="search-container">
+    <div>
+        <label for="cf">Inserisci il tuo Codice Fiscale:</label>
+        <input type="text" id="cf" placeholder="Codice Fiscale" />
+    </div>
+    <button id="inviaNome" class="search-button">Cerca per CF</button>
+</div>
+
+<div id="risultati">
     <p>Risultati della ricerca:</p>
-    <div id="dettagliVenditaVendite"></div>
-</div>
-
-<h2>Ricerca per Codice Fiscale</h2>
-
-<div>
-    <input type="text" id="cf" placeholder="Inserisci il tuo Codice Fiscale" />
-    <button id="inviaNome">Cerca</button>
-</div>
-<div id="risultatiCF">
-    <p>Risultati della ricerca:</p>
-    <div id="dettagliVenditaCF"></div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Data della vendita</th>
+                <th>Prodotto venduto</th>
+            </tr>
+        </thead>
+        <tbody id="dettagliVendita"></tbody>
+    </table>
 </div>
 
 @section scripts {
@@ -34,15 +42,18 @@
                     url: "/Medicinali/Ricerca",
                     data: { data: dataVendita },
                     success: function (data) {
+                        var dettagliVendita = $("#dettagliVendita");
+                        dettagliVendita.empty();
+
                         if (data.length > 0) {
-                            var dettagliVenditaVendite = $("#dettagliVenditaVendite");
-                            dettagliVenditaVendite.empty();
                             $.each(data, function (index, vendita) {
-                                dettagliVenditaVendite.append('<p>Data della vendita: ' + vendita.Data + '</p>');
-                                dettagliVenditaVendite.append('<p>Prodotto venduto: ' + vendita.Medicina + '</p>');
+                                dettagliVendita.append('<tr>');
+                                dettagliVendita.append('<td>' + vendita.Data + '</td>');
+                                dettagliVendita.append('<td>' + vendita.Medicina + '</td>');
+                                dettagliVendita.append('</tr>');
                             });
                         } else {
-                            $("#dettagliVenditaVendite").html("Nessuna vendita trovata per la data specificata.");
+                            dettagliVendita.html("Nessuna vendita trovata per la data specificata.");
                         }
                     }
                 });
@@ -55,15 +66,18 @@
                     url: "/Medicinali/RicercaCF",
                     data: { Cf: Cf },
                     success: function (data) {
+                        var dettagliVendita = $("#dettagliVendita");
+                        dettagliVendita.empty();
+
                         if (data.length > 0) {
-                            var dettagliVenditaCF = $("#dettagliVenditaCF");
-                            dettagliVenditaCF.empty();
                             $.each(data, function (index, vendita) {
-                                dettagliVenditaCF.append('<p>Data della vendita: ' + vendita.Data + '</p>');
-                                dettagliVenditaCF.append('<p>Prodotto venduto: ' + vendita.Medicina + '</p>');
+                                dettagliVendita.append('<tr>');
+                                dettagliVendita.append('<td>' + vendita.Data + '</td>');
+                                dettagliVendita.append('<td>' + vendita.Medicina + '</td>');
+                                dettagliVendita.append('</tr>');
                             });
                         } else {
-                            $("#dettagliVenditaCF").html("Nessun risultato trovato.");
+                            dettagliVendita.html("Nessun risultato trovato.");
                         }
                     }
                 });
