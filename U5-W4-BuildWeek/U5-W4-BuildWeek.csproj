@@ -239,6 +239,7 @@
     <Content Include="Views\Animali\ModificaAnimale.cshtml" />
     <Content Include="Views\Animali\DettaglioAnimale.cshtml" />
     <Content Include="Views\Ricoveri\Rimborsi.cshtml" />
+    <Content Include="Views\Animali\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
