@@ -44,11 +44,11 @@ namespace U5_W4_BuildWeek.Controllers
         }
 
         [HttpPost]
-        public ActionResult ModificaTipologia(AnimaliTipologia tipologia)
+        public ActionResult ModificaTipologia(AnimaliTipologia nuovaTipologia)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tipologia).State = EntityState.Modified;
+                db.Entry(nuovaTipologia).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Tipologie");
             }
