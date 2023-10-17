@@ -172,6 +172,9 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Home\logo.png" />
+    <Content Include="Content\Home\pronto.png" />
+    <Content Include="Content\Home\veterinario.png" />
     <Content Include="Content\StyleSheet1.css">
       <DependentUpon>StyleSheet1.scss</DependentUpon>
     </Content>

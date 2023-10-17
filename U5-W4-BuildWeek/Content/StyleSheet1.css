@@ -1,4 +1,5 @@
-﻿#sectionLogin .cascading-right {
+﻿/* PAGINA LOGIN */
+#sectionLogin .cascading-right {
   margin-right: -50px;
 }
 @media (max-width: 991.98px) {
@@ -7,6 +8,8 @@
   }
 }
 
+/* PAGINA LOGIN */
+/* PAGINA REGISTER */
 #sectionRegister .cascading-right {
   margin-right: -50px;
 }
@@ -15,3 +18,19 @@
     margin-right: 0;
   }
 }
+
+/* PAGINA REGISTER */
+/* PAGINA HOME */
+#faqAnimali {
+  height: 20em;
+  background-image: url(templates/yootheme/cache/25/sfondo_articoli_piu_letti-25b62bfc.jpeg);
+}
+#faqAnimali .card-body a {
+  color: #0094ff;
+  text-decoration: none;
+}
+#faqAnimali .card-body a:hover {
+  text-decoration: underline;
+}
+
+/* PAGINA HOME */
