@@ -113,10 +113,12 @@ namespace U5_W4_BuildWeek.Controllers
         }
 
 
+        //Lista delle ditte presenti
         public ActionResult ListaDitte()
         {
             return View(db.Ditte.ToList());
         }
+
 
         //Creazione Ditta
         public ActionResult CreaDitta() 
@@ -140,6 +142,9 @@ namespace U5_W4_BuildWeek.Controllers
             return View();
         }
 
+
+
+        //Modifica Ditta
         public ActionResult ModificaDitta(int id )
         {
             var d = db.Ditte.Find(id);
@@ -175,6 +180,9 @@ namespace U5_W4_BuildWeek.Controllers
             return View();
         }
 
+
+
+        //Eliminazione ditta
         public ActionResult EliminaDitta(int id)
         {
             Ditte d = db.Ditte.Find(id);
@@ -196,6 +204,107 @@ namespace U5_W4_BuildWeek.Controllers
 
             return RedirectToAction("ListaDitte");
         }
+
+        public ActionResult Cerca()
+        {
+            return View();
+        }
+
+
+        public JsonResult Armadietto(string nome)
+        {
+            var localizzazione = db.Medicinali.Where(m => m.Nome == nome).FirstOrDefault();
+
+            if (localizzazione != null)
+            {
+           
+                var result = new
+                {
+                    Nome = localizzazione.Nome,
+                    Posizione = localizzazione.Posizione
+                };
+                return Json(result, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+               
+                return Json(null, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public ActionResult Vendite() 
+        {
+            return View();
+        }
+
+        public JsonResult Ricerca(DateTime data)
+        {
+            var vendite = db.MedicinaliVendite.Where(m => DbFunctions.TruncateTime(m.Data) == data.Date).ToList();
+
+            var risultati = new List<object>();
+
+            foreach (var vendita in vendite)
+            {
+                var medicina = db.Medicinali.Find(vendita.FkProdotto);
+
+                var result = new
+                {
+                    Data = vendita.Data.ToString("dd-MM-yyyy"),
+                    Medicina =  medicina.Nome 
+                };
+
+                risultati.Add(result);
+            }
+
+            return Json(risultati, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult VenditePerCliente()
+        {
+            return View();
+        }
+
+        public JsonResult RicercaCF(string Cf)
+        {
+            try
+            {
+                var user = db.Utenti.Where(u => u.CF == Cf).FirstOrDefault();
+
+                if (user != null)
+                {
+                    var vendite = db.MedicinaliVendite.Where(m => m.FkUtente == user.Id).ToList();
+
+                    var risultati = new List<object>();
+
+                    foreach (var vendita in vendite)
+                    {
+                        var medicina = db.Medicinali.Find(vendita.FkProdotto);
+
+                        if (medicina != null)
+                        {
+                            var result = new
+                            {
+                                Data = vendita.Data.ToString("dd-MM-yyyy"),
+                                Medicina = medicina.Nome
+                            };
+
+                            risultati.Add(result);
+                        }
+                    }
+
+                    return Json(risultati, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new { error = "Utente non trovato" }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { error = "Errore interno del server" }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
 
     }
 }

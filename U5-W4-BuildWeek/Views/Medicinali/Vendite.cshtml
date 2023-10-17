@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "Vendite";
+}
+<h2>Ricerca Vendite</h2>
+
+<div>
+    <input type="date" id="dataVendita" />
+    <button id="cercaVendite">Cerca Vendite</button>
+</div>
+
+<div id="risultatiVendite">
+    <p>Risultati della ricerca:</p>
+    <div id="dettagliVenditaVendite"></div>
+</div>
+
+<h2>Ricerca per Codice Fiscale</h2>
+
+<div>
+    <input type="text" id="cf" placeholder="Inserisci il tuo Codice Fiscale" />
+    <button id="inviaNome">Cerca</button>
+</div>
+<div id="risultatiCF">
+    <p>Risultati della ricerca:</p>
+    <div id="dettagliVenditaCF"></div>
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $('#cercaVendite').click(function () {
+                var dataVendita = $('#dataVendita').val();
+                $.ajax({
+                    type: "POST",
+                    url: "/Medicinali/Ricerca",
+                    data: { data: dataVendita },
+                    success: function (data) {
+                        if (data.length > 0) {
+                            var dettagliVenditaVendite = $("#dettagliVenditaVendite");
+                            dettagliVenditaVendite.empty();
+                            $.each(data, function (index, vendita) {
+                                dettagliVenditaVendite.append('<p>Data della vendita: ' + vendita.Data + '</p>');
+                                dettagliVenditaVendite.append('<p>Prodotto venduto: ' + vendita.Medicina + '</p>');
+                            });
+                        } else {
+                            $("#dettagliVenditaVendite").html("Nessuna vendita trovata per la data specificata.");
+                        }
+                    }
+                });
+            });
+
+            $('#inviaNome').click(function () {
+                var Cf = $('#cf').val();
+                $.ajax({
+                    type: "POST",
+                    url: "/Medicinali/RicercaCF",
+                    data: { Cf: Cf },
+                    success: function (data) {
+                        if (data.length > 0) {
+                            var dettagliVenditaCF = $("#dettagliVenditaCF");
+                            dettagliVenditaCF.empty();
+                            $.each(data, function (index, vendita) {
+                                dettagliVenditaCF.append('<p>Data della vendita: ' + vendita.Data + '</p>');
+                                dettagliVenditaCF.append('<p>Prodotto venduto: ' + vendita.Medicina + '</p>');
+                            });
+                        } else {
+                            $("#dettagliVenditaCF").html("Nessun risultato trovato.");
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}
