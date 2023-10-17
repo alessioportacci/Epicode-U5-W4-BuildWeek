@@ -173,6 +173,9 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Home\logo.png" />
+    <Content Include="Content\Home\pronto.png" />
+    <Content Include="Content\Home\veterinario.png" />
     <Content Include="Content\StyleSheet1.css">
       <DependentUpon>StyleSheet1.scss</DependentUpon>
     </Content>
@@ -238,6 +241,11 @@
     <Content Include="Views\Animali\RegistraAnimale.cshtml" />
     <Content Include="Views\Animali\ModificaAnimale.cshtml" />
     <Content Include="Views\Animali\DettaglioAnimale.cshtml" />
+    <Content Include="Views\Ricoveri\Rimborsi.cshtml" />
+    <Content Include="Views\Animali\Index.cshtml" />
+    <Content Include="Views\Medicinali\Cerca.cshtml" />
+    <Content Include="Views\Medicinali\Vendite.cshtml" />
+    <Content Include="Views\Medicinali\VenditePerCliente.cshtml" />
     <Content Include="Views\Ricoveri\Ricoveri.cshtml" />
     <Content Include="Views\TipologiaAnimale\Tipologie.cshtml" />
     <Content Include="Views\TipologiaAnimale\AggiungiTipologia.cshtml" />
@@ -245,7 +253,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Imgs\Animali\" />
     <Folder Include="Views\RoleManager\" />
   </ItemGroup>
   <ItemGroup>

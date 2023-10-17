@@ -9,10 +9,18 @@ using U5_W4_BuildWeek.Models.DbModels;
 
 namespace U5_W4_BuildWeek.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AnimaliController : Controller
     {
         ModelDbContext db = new ModelDbContext();
 
+        public ActionResult Index()
+        {
+            return View(db.Animali.ToList());
+        }
+
+
+        [AllowAnonymous]
         public ActionResult DettaglioAnimale(int id)
         {
             var animale = db.Animali.Find(id);

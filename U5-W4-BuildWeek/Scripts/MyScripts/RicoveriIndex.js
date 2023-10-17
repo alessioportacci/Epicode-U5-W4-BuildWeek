@@ -22,11 +22,11 @@
                 $.each(animali, function (i, item) {
                     let card =
                         "<div class='card' style='width: 18rem;'>" +
-                        "<img src = '...' class='card-img-top' alt = '..'>" +
+                        "<img src ='./Content/Imgs/Animali/" + item.Foto + "' class='card-img-top' alt = '..'>" +
                         "<div class='card-body'> " +
                         "<h5 class='card-title'>" + item.Nome + "</h5> " +
                         "<p class='card-text'>" + item.Colore + "</p>" +
-                        "<a href='Ricoveri/Details/" + item.Id + "' class='btn btn-primary'>Go somewhere</a> " +
+                        "<a href='Animali/DettaglioAnimale/" + item.Id + "' class='btn btn-primary'>Storia medica</a> " +
                         "</div>" +
                         "</div>"
 
