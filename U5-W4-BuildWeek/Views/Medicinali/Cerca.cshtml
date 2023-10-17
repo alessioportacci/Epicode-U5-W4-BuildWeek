@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Cerca";
+}
+
+<h2>Cerca</h2>
+
+<div>
+    <input type="text" id="nomeMedicinale" placeholder="Inserisci il nome del medicinale" />
+    <button id="inviaNome">Cerca</button>
+</div>
+<div id="risultati">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Posizione</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+@section scripts {
+
+    <script>
+        $(document).ready(function () {
+            $('#inviaNome').click(function () {
+                var nomeMedicinale = $('#nomeMedicinale').val();
+                $.ajax({
+                    type: "POST",
+                    url: "/Medicinali/Armadietto",
+                    data: { nome: nomeMedicinale },
+                    success: function (data) {
+                        if (data) {
+                            var table = $("#risultati table tbody");
+                            table.empty();
+                            table.append('<tr><td>' + data.Nome + '</td><td>' + data.Posizione + '</td></tr>');
+                        } else {
+                            $("#risultati").html("Nessun risultato trovato.");
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}
