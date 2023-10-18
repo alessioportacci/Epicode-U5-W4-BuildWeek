@@ -7,6 +7,8 @@ using U5_W4_BuildWeek.Models.DbModels;
 
 namespace U5_W4_BuildWeek.Controllers
 {
+
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
 
@@ -24,6 +26,8 @@ namespace U5_W4_BuildWeek.Controllers
             List<SelectListItem> Ruoli = new List<SelectListItem>();
             Ruoli.Add(new SelectListItem() { Text = "Utente", Value = "User" });
             Ruoli.Add(new SelectListItem() { Text = "Amministratore", Value = "Admin" });
+            Ruoli.Add(new SelectListItem() { Text = "Veterinario", Value = "Veterinario" });
+            Ruoli.Add(new SelectListItem() { Text = "Farmacista", Value = "Farmacista" });
             this.ViewBag.Ruoli = new SelectList(Ruoli, "Value", "Text");
 
             return View(db.Utenti.Find(id));
