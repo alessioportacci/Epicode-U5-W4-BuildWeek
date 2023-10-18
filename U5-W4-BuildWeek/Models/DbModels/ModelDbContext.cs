@@ -72,5 +72,7 @@ namespace U5_W4_BuildWeek.Models.DbModels
                 .HasForeignKey(e => e.FkUtente)
                 .WillCascadeOnDelete(false);
         }
+
+        public System.Data.Entity.DbSet<U5_W4_BuildWeek.Models.RicoveriModel> RicoveriModels { get; set; }
     }
 }

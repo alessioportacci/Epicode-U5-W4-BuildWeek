@@ -9,17 +9,23 @@ using U5_W4_BuildWeek.Models.DbModels;
 
 namespace U5_W4_BuildWeek.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AnimaliController : Controller
     {
         ModelDbContext db = new ModelDbContext();
 
+        public ActionResult Index()
+        {
+            return View(db.Animali.ToList());
+        }
 
+
+        [AllowAnonymous]
         public ActionResult DettaglioAnimale(int id)
         {
             var animale = db.Animali.Find(id);
             return View(animale);
         }
-
 
         [HttpGet]
         public ActionResult RegistraAnimale()
@@ -50,7 +56,6 @@ namespace U5_W4_BuildWeek.Controllers
             }
             return View();
         }
-
 
         [HttpGet]
         public ActionResult ModificaAnimale(int id)
@@ -84,7 +89,6 @@ namespace U5_W4_BuildWeek.Controllers
             return View(animale);
         }
 
-
         public ActionResult EliminaAnimale(int id)
         {
             var animale = db.Animali.Find(id);
@@ -96,7 +100,6 @@ namespace U5_W4_BuildWeek.Controllers
             }
             return View("Index");
         }
-
 
         #region Get Clienti / Tipologie
 
@@ -115,7 +118,6 @@ namespace U5_W4_BuildWeek.Controllers
                 return Utenti;
             }
         }
-
 
         public List<SelectListItem> GetTipologiaAnimale
         {

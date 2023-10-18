@@ -20,6 +20,7 @@ namespace U5_W4_BuildWeek.Controllers
             
             return View();
         }
+
         [HttpPost]
         public ActionResult Acquista( int id, string codiceFiscale, string ricetta)
         {

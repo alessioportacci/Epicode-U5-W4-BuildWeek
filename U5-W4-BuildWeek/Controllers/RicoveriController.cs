@@ -99,14 +99,5 @@ namespace U5_W4_BuildWeek.Controllers
         {
             return View();
         }
-
-
-
-        public JsonResult Rimborsi()
-        {
-            var ricoveriAttivi = db.Ricoveri.Where(o => o.Attivo == true);
-            return Json(ricoveriAttivi, JsonRequestBehavior.AllowGet);
-        }
-
     }
 }

@@ -1,6 +1,7 @@
 ﻿body {
 }
 
+/* PAGINA LOGIN */
 #sectionLogin {
     .cascading-right {
         margin-right: -50px;
@@ -12,7 +13,9 @@
         }
     }
 }
+/* PAGINA LOGIN */
 
+/* PAGINA REGISTER */
 #sectionRegister {
     .cascading-right {
         margin-right: -50px;
@@ -24,3 +27,22 @@
         }
     }
 }
+/* PAGINA REGISTER */
+
+/* PAGINA HOME */
+#faqAnimali {
+    height: 20em;
+    background-image:url(templates/yootheme/cache/25/sfondo_articoli_piu_letti-25b62bfc.jpeg);
+    
+    .card-body {
+        a {
+            color: #0094ff;
+            text-decoration: none;
+        }
+    }
+
+    .card-body a:hover {
+        text-decoration: underline;
+    }
+}
+/* PAGINA HOME */

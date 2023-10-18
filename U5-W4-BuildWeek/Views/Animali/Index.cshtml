@@ -1,0 +1,81 @@
+﻿@model IEnumerable<U5_W4_BuildWeek.Models.DbModels.Animali>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "RegistraAnimale")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DataRegistrazione)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataInizioRicovero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Foto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Colore)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataNascita)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Microchip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnimaliTipologia.Tipologia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Utenti.Nome)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataRegistrazione)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataInizioRicovero)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Foto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Colore)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataNascita)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Microchip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnimaliTipologia.Tipologia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Utenti.Nome)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "ModificaAnimale", new { id=item.Id }) |
+            @Html.ActionLink("Details", "DettaglioAnimale", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "EliminaAnimale", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

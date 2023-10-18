@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "Vendite";
+}
+<h2>Ricerca Vendite</h2>
+
+<div class="search-container">
+    <div>
+        <label for="dataVendita">Seleziona una data:</label>
+        <input type="date" id="dataVendita" />
+    </div>
+    <button id="cercaVendite" class="search-button">Cerca Vendite</button>
+</div>
+
+<div class="search-container">
+    <div>
+        <label for="cf">Inserisci il tuo Codice Fiscale:</label>
+        <input type="text" id="cf" placeholder="Codice Fiscale" />
+    </div>
+    <button id="inviaNome" class="search-button">Cerca per CF</button>
+</div>
+
+<div id="risultati">
+    <p>Risultati della ricerca:</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Data della vendita</th>
+                <th>Prodotto venduto</th>
+            </tr>
+        </thead>
+        <tbody id="dettagliVendita"></tbody>
+    </table>
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $('#cercaVendite').click(function () {
+                var dataVendita = $('#dataVendita').val();
+                $.ajax({
+                    type: "POST",
+                    url: "/Medicinali/Ricerca",
+                    data: { data: dataVendita },
+                    success: function (data) {
+                        var dettagliVendita = $("#dettagliVendita");
+                        dettagliVendita.empty();
+
+                        if (data.length > 0) {
+                            $.each(data, function (index, vendita) {
+                                dettagliVendita.append('<tr>');
+                                dettagliVendita.append('<td>' + vendita.Data + '</td>');
+                                dettagliVendita.append('<td>' + vendita.Medicina + '</td>');
+                                dettagliVendita.append('</tr>');
+                            });
+                        } else {
+                            dettagliVendita.html("Nessuna vendita trovata per la data specificata.");
+                        }
+                    }
+                });
+            });
+
+            $('#inviaNome').click(function () {
+                var Cf = $('#cf').val();
+                $.ajax({
+                    type: "POST",
+                    url: "/Medicinali/RicercaCF",
+                    data: { Cf: Cf },
+                    success: function (data) {
+                        var dettagliVendita = $("#dettagliVendita");
+                        dettagliVendita.empty();
+
+                        if (data.length > 0) {
+                            $.each(data, function (index, vendita) {
+                                dettagliVendita.append('<tr>');
+                                dettagliVendita.append('<td>' + vendita.Data + '</td>');
+                                dettagliVendita.append('<td>' + vendita.Medicina + '</td>');
+                                dettagliVendita.append('</tr>');
+                            });
+                        } else {
+                            dettagliVendita.html("Nessun risultato trovato.");
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}

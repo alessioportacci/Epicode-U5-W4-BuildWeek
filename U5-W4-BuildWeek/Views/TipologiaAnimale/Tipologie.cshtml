@@ -1,0 +1,32 @@
+﻿@model IEnumerable<U5_W4_BuildWeek.Models.DbModels.AnimaliTipologia>
+
+@{
+    ViewBag.Title = "Tipologie";
+}
+
+<h2>Tipologie</h2>
+
+<p>
+    @Html.ActionLink("Aggiungi Tipologia", "AggiungiTipologia")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipologia)
+        </th>
+        <th>Gestione</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tipologia)
+        </td>
+        <td>
+            @Html.ActionLink("Modifica", "ModificaTipologia", new { id=item.Id }) |
+            @Html.ActionLink("Elimina", "EliminaTipologia", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
