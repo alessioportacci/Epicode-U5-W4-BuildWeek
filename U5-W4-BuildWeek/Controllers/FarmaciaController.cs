@@ -16,11 +16,14 @@ namespace U5_W4_BuildWeek.Controllers
         {
             return View(db.Medicinali.ToList());
         }
-
-        public ActionResult Acquista (int id )
+        public ActionResult Acquista (int id = 5 )
         {
-            
-            return View();
+            Medicinali medicinale = db.Medicinali.Find(id);
+
+          
+            ViewBag.NomeMedicinale = medicinale.Nome;
+            ViewBag.PrezzoMedicinale = medicinale.Costo;
+            return PartialView(db.MedicinaliVendite.Find(id));
         }
 
         [HttpPost]
@@ -37,7 +40,7 @@ namespace U5_W4_BuildWeek.Controllers
             };
             db.MedicinaliVendite.Add(vendita);
             db.SaveChanges();
-            return View();
+            return RedirectToAction ("Index");
         }
     }
 }
