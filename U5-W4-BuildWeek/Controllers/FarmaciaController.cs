@@ -7,14 +7,16 @@ using U5_W4_BuildWeek.Models.DbModels;
 
 namespace U5_W4_BuildWeek.Controllers
 {
+    [Authorize]
     public class FarmaciaController : Controller
     {
         ModelDbContext db = new ModelDbContext();
-        // GET: Farmacia
+
         public ActionResult Index()
         {
             return View(db.Medicinali.ToList());
         }
+
         public ActionResult Acquista (int id )
         {
             

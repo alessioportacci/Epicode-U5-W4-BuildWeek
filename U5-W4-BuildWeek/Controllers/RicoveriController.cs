@@ -8,17 +8,20 @@ using U5_W4_BuildWeek.Models.DbModels;
 
 namespace U5_W4_BuildWeek.Controllers
 {
+    [Authorize(Roles = "Admin,Veterinario")]
     public class RicoveriController : Controller
     {
 
         ModelDbContext db = new ModelDbContext();
 
+        [AllowAnonymous]
         public ActionResult Index()
         {
             ViewBag.Tipologie = db.AnimaliTipologia.ToList();
             return View();
         }
 
+        [AllowAnonymous]
         public JsonResult RicoveriFilter(List<int> Tipologie)
         {
             List<RicoveriModel> ricoveri = new List<RicoveriModel>();
@@ -48,12 +51,13 @@ namespace U5_W4_BuildWeek.Controllers
             return Json(ricoveri);
         }
 
-
+        [AllowAnonymous]
         public ActionResult Details(int id)
         {
 
             return View();
         }
+
 
         public ActionResult Create()
         {
@@ -75,6 +79,7 @@ namespace U5_W4_BuildWeek.Controllers
             }
         }
 
+
         public ActionResult Edit(int id)
         {
             return View();
@@ -94,6 +99,7 @@ namespace U5_W4_BuildWeek.Controllers
                 return View();
             }
         }
+
 
         public ActionResult Delete(int id)
         {

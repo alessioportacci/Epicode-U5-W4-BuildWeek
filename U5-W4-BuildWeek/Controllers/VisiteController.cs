@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,6 +7,7 @@ using U5_W4_BuildWeek.Models.DbModels;
 
 namespace U5_W4_BuildWeek.Controllers
 {
+    [Authorize(Roles = "Admin,Veterinario")]
     public class VisiteController : Controller
     {
         ModelDbContext db = new ModelDbContext();
