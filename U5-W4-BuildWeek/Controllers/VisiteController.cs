@@ -11,44 +11,47 @@ namespace U5_W4_BuildWeek.Controllers
     {
         ModelDbContext db = new ModelDbContext();
         // GET: Visite
-        public ActionResult Index()
+        public ActionResult Index([Bind(Include = "Microchip,Nome")] Animali animale)
         {
+            List<Visite> Visite = db.Visite.ToList();
 
+            if (animale.Microchip != null)
+                Visite = Visite.Where(v => v.Animali.Microchip == animale.Microchip.Trim()).ToList();
 
+            if (animale.Nome != null)
+                Visite = Visite.Where(v => v.Animali.Nome.ToLower().Contains(animale.Nome.ToLower())).ToList();
 
-            return View(db.Visite.ToList());
+            return View(Visite);
         }
 
-        public ActionResult create()
+        public ActionResult Create(int id)
         {
-
+            ViewBag.Id = id;
             return View();
         }
 
         [HttpPost]
-        public ActionResult create(Visite visite)
+        public ActionResult Create(Visite visite)
         {
+
             if (ModelState.IsValid)
             {
                 db.Visite.Add(visite);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("DettaglioAnimale", "Animali", new{ id = visite.FkAnimale });
             }
-           
-            return View(visite);
-            
+
+            ViewBag.Id = visite.FkAnimale;
+            return View(visite);      
         }
 
         public ActionResult Delete(int id) 
         {
             Visite visite = db.Visite.Find(id);
-
             db.Visite.Remove(visite);
             db.SaveChanges();
 
             return RedirectToAction("Index");
-
-
         }
 
     }

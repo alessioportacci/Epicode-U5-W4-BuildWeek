@@ -30,6 +30,7 @@ namespace U5_W4_BuildWeek.Controllers
         [AllowAnonymous]
         public PartialViewResult StoriaMedica(int id)
         {
+            ViewBag.Id = id;
             return PartialView(db.Visite.Where(v => v.FkAnimale == id));
         }
 
