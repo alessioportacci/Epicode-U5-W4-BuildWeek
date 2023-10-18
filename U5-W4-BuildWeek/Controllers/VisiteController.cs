@@ -46,6 +46,27 @@ namespace U5_W4_BuildWeek.Controllers
             return View(visite);      
         }
 
+
+        public ActionResult Edit(int id)
+        {
+            return View(db.Visite.Find(id));
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Visite visita)
+        {
+            if (ModelState.IsValid) 
+            {
+                db.Entry(visita).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+
+            return View();
+        }
+
+
         public ActionResult Delete(int id) 
         {
             Visite visite = db.Visite.Find(id);
