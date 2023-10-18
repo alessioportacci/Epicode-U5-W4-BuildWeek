@@ -49,6 +49,40 @@
     <div class="">
         @RenderBody()
         <footer class="text-center text-lg-start bg-light text-muted">
+            @if (ViewContext.RouteData.Values["Controller"].ToString() == "Home" && ViewContext.RouteData.Values["Action"].ToString() == "Index")
+            {
+                <section id="body-form">
+                    <div class="container contact-form">
+                        <div class="contact-image">
+                            <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact" />
+                        </div>
+                        <form method="post">
+                            <h3>Lasciaci un Messaggio</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-1">
+                                        <input type="text" name="txtName" class="form-control" placeholder="Il tuo nome" value="" />
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <input type="text" name="txtEmail" class="form-control" placeholder="La tua email" value="" />
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <input type="text" name="txtPhone" class="form-control" placeholder="Il tuo numero di telefono" value="" />
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <input type="submit" name="btnSubmit" class="btnContact" value="Invia Messaggio" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <textarea name="txtMsg" class="form-control" placeholder="Il tuo messaggio" style="width: 100%; height: 150px;"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            }
             <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
                 <div class="me-5 d-none d-lg-block">
                     <span>Resta in contatto con noi sui social network:</span>
@@ -74,7 +108,7 @@
                     </a>
                 </div>
             </section>
-            <section class="">
+            <section>
                 <div class="container text-center text-md-start mt-5">
                     <div class="row mt-3">
                         <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
@@ -138,7 +172,6 @@
                 <a class="text-reset fw-bold" href="#">Team 2</a>
             </div>
         </footer>
-
     </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
