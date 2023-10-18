@@ -233,7 +233,6 @@
     <Content Include="Views\Medicinali\ListaDitte.cshtml" />
     <Content Include="Views\Medicinali\ModificaDitta.cshtml" />
     <Content Include="Views\Farmacia\Index.cshtml" />
-    <Content Include="Views\Farmacia\Acquista.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Admin\Details.cshtml" />
@@ -246,6 +245,7 @@
     <Content Include="Views\Animali\Index.cshtml" />
     <Content Include="Views\Medicinali\Cerca.cshtml" />
     <Content Include="Views\Medicinali\Vendite.cshtml" />
+    <Content Include="Views\Farmacia\Acquista.cshtml" />
     <Content Include="Views\Medicinali\VenditePerCliente.cshtml" />
     <Content Include="Views\Ricoveri\Ricoveri.cshtml" />
     <Content Include="Views\TipologiaAnimale\Tipologie.cshtml" />

@@ -3,32 +3,108 @@
 @{
     ViewBag.Title = "Index";
 }
+<link href="~/Content/Site.css" rel="stylesheet" />
 
-<div class="row">
-    @foreach (var m in Model)
-    {
-        <div class="col-md-4">
-            <div class="card mb-4 h-100">
-                <div class="card-body">
-                    <h5 class="card-title">@m.Nome</h5>
-                    <p class="card-text"><strong>Costo:</strong> @string.Format("{0:C}", m.Costo)</p>
-                    <p class="card-text"><strong>Descrizione:</strong> @m.Descrizione</p>
-                  
-                    <p class="card-text">
 
-                        <strong>Tipologia:</strong>
-                        @if (m.Medicinale)
-                        {
-                        <span> Medicinale </span>
-                    }
-                    else
-                    {
-                        <span> Alimento </span>
-                    }
-                        </p>
-                        <a href="@Url.Action("Acquista", new { id = m.Id })" class="btn btn-success">Acquista</a>
+<div class="container">
+    <div class="row product-section">
+        <div class="col-12">
+            <h2>Prodotti</h2>
+        </div>
+        <div class="col-12 product-container">
+            <div class="filter-panel mx-3 my-3">
+                <h4>Filtri:</h4>
+                <!-- Pulsanti di filtro -->
+                <button class="btn btn-light filter-button" data-category="medicinal">Medicinali</button>
+                <button class="btn btn-light filter-button" data-category="food">Alimentari</button>
+                <button class="btn btn-light filter-button" data-category="all">Tutti</button>
+            </div>
+            <div class="product-list">
+                @foreach (U5_W4_BuildWeek.Models.DbModels.Medicinali m in Model)
+                {
+                    <div class="product-box py-2" data-categories="@((m.Medicinale ? "medicinal " : "food "))">
+                        <div class="product-details">
+                            <h3>@m.Nome</h3>
+                            <p>@m.Descrizione</p>
+                        </div>
+                        <div class="product-button">
+                            <div class="product-price">@string.Format("{0:C}", m.Costo)</div>
+                            <div class="add-to-cart">
+                                <strong>Tipologia:</strong>
+                                @if (m.Medicinale)
+                                {
+                                    <span>Medicinale</span>
+                                }
+                                else
+                                {
+                                    <span>Alimento</span>
+                                }
+                            </div>
+                            <div style="text-align: right;">
+                                <!-- Allinea il pulsante a destra -->
+                                <a href="javascript:void(0);" class="btn btn-primary acquista-link" data-id="@m.Id">Aggiungi al Carrello</a>
+                            </div>
+                        </div>
                     </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Acquista</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="acquista-partial-view">
+                    <!-- Qui verrà caricata la partial view -->
                 </div>
             </div>
-        }
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                
+            </div>
+        </div>
+    </div>
 </div>
+
+
+@section scripts{
+    <script>
+       
+            $(document).ready(function () {
+                $(".acquista-link").click(function () {
+                    var productId = $(this).data("id");
+
+                    // Effettua una chiamata AJAX per ottenere la partial view "Acquista" e la carica nel modal
+                    $.get("Acquista?id=" + productId, function (data) {
+                        $("#acquista-partial-view").html(data);
+                        $(".modal").modal("show");
+                    });
+                });
+            });
+ 
+        // Mostra inizialmente la lista completa
+        $(".product-box").show();
+
+        // Gestione dei pulsanti di filtro
+        $(".filter-button").click(function () {
+            var category = $(this).data("category");
+
+            if (category === "medicinal" || category === "food") {
+                // Nascondi tutti i prodotti
+                $(".product-box").hide();
+
+                // Mostra solo i prodotti della categoria selezionata
+                $("div[data-categories*='" + category + "']").show();
+            } else {
+                // Mostra tutti i prodotti se nessun filtro è selezionato
+                $(".product-box").show();
+            }
+        });
+    </script>
+}
