@@ -11,7 +11,7 @@ namespace U5_W4_BuildWeek.Models
     {
         public int Id { get; set; }
 
-        public DateTime? DataInizioRicovero { get; set; }
+        public string DataInizioRicovero { get; set; }
 
         [Required]
         [StringLength(70)]
@@ -24,11 +24,11 @@ namespace U5_W4_BuildWeek.Models
         [StringLength(50)]
         public string Colore { get; set; }
 
-        public DateTime? DataNascita { get; set; }
+        public string DataNascita { get; set; }
 
         [StringLength(50)]
         public string Microchip { get; set; }
 
-        public int FkTipologia { get; set; }
+        public string Tipologia { get; set; }
     }
 }

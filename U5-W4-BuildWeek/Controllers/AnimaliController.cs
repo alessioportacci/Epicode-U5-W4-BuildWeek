@@ -9,7 +9,7 @@ using U5_W4_BuildWeek.Models.DbModels;
 
 namespace U5_W4_BuildWeek.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin,Veterinario")]
     public class AnimaliController : Controller
     {
         ModelDbContext db = new ModelDbContext();
@@ -26,6 +26,14 @@ namespace U5_W4_BuildWeek.Controllers
             var animale = db.Animali.Find(id);
             return View(animale);
         }
+
+        [AllowAnonymous]
+        public PartialViewResult StoriaMedica(int id)
+        {
+            ViewBag.Id = id;
+            return PartialView(db.Visite.Where(v => v.FkAnimale == id));
+        }
+
 
         [HttpGet]
         public ActionResult RegistraAnimale()

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<U5_W4_BuildWeek.Models.DbModels.Visite>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3> Filtri </h3>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.Label("Microchip", new { @class = "d-block" })
+    @Html.Editor("Microchip", new { htmlAttributes = new { @class = "from-control", @Placeholder = "Inserire Microchip" } })
+
+    @Html.Label("Nome", "Nome Animale" , new { @class = "d-block" })
+    @Html.Editor("Nome", new { htmlAttributes = new { @class = "from-control", @Placeholder = "Inserire nome animale" } })
+
+    <input type="submit" value="Cerca" class="btn btn-primary d-block" />
+}
+
+<h2>Lista Visite</h2>
+
+@*<p>
+        @Html.ActionLink("Aggiungi una visita", "Create")
+    </p>*@
+<table class="table">
+    <tr>
+        <th>
+            Paziente
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataVisita)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EsameObbiettivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescrizioneCura)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a href="@Url.Action("DettaglioAnimale", "Animali", new { area = "", id = item.Animali.Id })">
+                    @if (item.Animali.Microchip != null || item.Animali.Microchip != null)
+                    {
+                        <span> @item.Animali.Microchip - </span>
+                    }
+                    @Html.DisplayFor(modelItem => item.Animali.Nome)
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataVisita)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EsameObbiettivo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescrizioneCura)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+
+</table>
+<p>
+    @Html.ActionLink("Aggiungi una visita", "Create")
+</p>

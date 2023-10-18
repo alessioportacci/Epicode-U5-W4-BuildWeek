@@ -133,6 +133,7 @@
     <Compile Include="Controllers\MedicinaliController.cs" />
     <Compile Include="Controllers\RicoveriController.cs" />
     <Compile Include="Controllers\TipologiaAnimaleController.cs" />
+    <Compile Include="Controllers\VisiteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -229,7 +230,6 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\CercaAnimale.cshtml" />
-    <Content Include="Views\Home\Contattaci.cshtml" />
     <Content Include="Views\Medicinali\ListaDitte.cshtml" />
     <Content Include="Views\Medicinali\ModificaDitta.cshtml" />
     <Content Include="Views\Farmacia\Index.cshtml" />
@@ -251,6 +251,10 @@
     <Content Include="Views\TipologiaAnimale\Tipologie.cshtml" />
     <Content Include="Views\TipologiaAnimale\AggiungiTipologia.cshtml" />
     <Content Include="Views\TipologiaAnimale\ModificaTipologia.cshtml" />
+    <Content Include="Views\Animali\StoriaMedica.cshtml" />
+    <Content Include="Views\Visite\Index.cshtml" />
+    <Content Include="Views\Visite\Create.cshtml" />
+    <Content Include="Views\Visite\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

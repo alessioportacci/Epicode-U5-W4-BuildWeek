@@ -8,6 +8,7 @@ using U5_W4_BuildWeek.Models.DbModels;
 
 namespace U5_W4_BuildWeek.Controllers
 {
+    [Authorize(Roles = "Admin,Farmacista")]
     public class MedicinaliController : Controller
     {
         ModelDbContext db = new ModelDbContext();
