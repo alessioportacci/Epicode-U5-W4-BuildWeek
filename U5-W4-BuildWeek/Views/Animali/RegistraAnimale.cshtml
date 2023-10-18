@@ -26,9 +26,8 @@
                 <label for="Nome" class="label-form">@Html.Raw("<strong>Nome</strong><span class='star'> *</span>")</label>
                 @Html.EditorFor(model => model.Nome)
                 @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
-
             </div>
-            <strong></strong>
+
             <div class="form-group">
                 <label for="FotoFile" class="label-form">@Html.Raw("<strong>Foto</strong>")</label>
                 <input type="file" name="FotoFile" />
