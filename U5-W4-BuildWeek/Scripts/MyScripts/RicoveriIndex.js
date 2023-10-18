@@ -1,6 +1,10 @@
 ﻿function filtra()
 {
 
+    $("#tab").empty()
+    $("#tab").addClass("d-none")
+
+
     //Mi prendo le checkbox
     let lista = []
     $(':checkbox').each(function () {
@@ -32,6 +36,48 @@
 
 
                     $("#agg").append(card)
+                })
+            },
+            error: function (e) {
+                console.log(e)
+            }
+        })
+}
+
+
+function RicoveriList() {
+
+    $("#agg").empty()
+    $("#tab").removeClass("d-none")
+    $("#tab").empty()
+
+
+    $("#tab").append("<tr>" +
+        "<th> Nome </th>" +
+        "<th> Inizio Ricovero </th>" +
+        "<th> Data nascita presunta </th>" +
+        "<th> MicroChip </th>" +
+        "<th> Razza </th>" +
+    "</tr>")
+
+    //Faccio la chiamata asincrona
+    $.ajax
+        ({
+            method: 'GET',
+            url: "Ricoveri/EstraiRicoveri",
+            success: function (animali) {
+                $("#agg").empty()
+                $.each(animali, function (i, item) {
+                    let tds =
+                        "<tr>" +
+                            "<th>" + item.Nome + "</th>" +
+                            "<th>" + item.DataInizioRicovero+ "</th>" +
+                            "<th>" + item.DataNascita + "</th>" +
+                            "<th>" + item.Microchip + "</th>" +
+                            "<th>" + item.Tipologia + "</th>" +
+                        "</tr>"
+
+                    $("#tab").append(tds)
                 })
             },
             error: function (e) {
