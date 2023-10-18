@@ -45,11 +45,13 @@
     {
         <tr>
             <td>
-                @if (item.Animali.Microchip != null || item.Animali.Microchip != null)
-                {
-                    <span> @item.Animali.Microchip - </span>
-                }
-                @Html.DisplayFor(modelItem => item.Animali.Nome)
+                <a href="@Url.Action("DettaglioAnimale", "Animali", new { area = "", id = item.Animali.Id })">
+                    @if (item.Animali.Microchip != null || item.Animali.Microchip != null)
+                    {
+                        <span> @item.Animali.Microchip - </span>
+                    }
+                    @Html.DisplayFor(modelItem => item.Animali.Nome)
+                </a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DataVisita)
