@@ -250,6 +250,7 @@
     <Content Include="Views\TipologiaAnimale\Tipologie.cshtml" />
     <Content Include="Views\TipologiaAnimale\AggiungiTipologia.cshtml" />
     <Content Include="Views\TipologiaAnimale\ModificaTipologia.cshtml" />
+    <Content Include="Views\Animali\StoriaMedica.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
