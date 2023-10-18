@@ -132,6 +132,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MedicinaliController.cs" />
     <Compile Include="Controllers\RicoveriController.cs" />
+    <Compile Include="Controllers\VisiteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -238,6 +239,8 @@
     <Content Include="Views\Animali\ModificaAnimale.cshtml" />
     <Content Include="Views\Animali\DettaglioAnimale.cshtml" />
     <Content Include="Views\Ricoveri\Rimborsi.cshtml" />
+    <Content Include="Views\Visite\Index.cshtml" />
+    <Content Include="Views\Visite\create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
