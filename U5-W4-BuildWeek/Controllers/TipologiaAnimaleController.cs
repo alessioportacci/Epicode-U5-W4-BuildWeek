@@ -30,11 +30,11 @@ namespace U5_W4_BuildWeek.Controllers
         {
             if (ModelState.IsValid)
             {
-            
+                db.AnimaliTipologia.Add(nuovaTipologia);
+                db.SaveChanges();
+                return RedirectToAction("Tipologie");
             }
-            db.AnimaliTipologia.Add(nuovaTipologia);
-            db.SaveChanges();
-            return RedirectToAction("Tipologie");
+            return View();
         }
 
         [HttpGet]
