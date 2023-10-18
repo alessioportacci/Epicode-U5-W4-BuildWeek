@@ -272,13 +272,6 @@ $padding: 10px;
     text-transform: uppercase;
 }
 
-img {
-    border-radius: 50%;
-    height: $imageSmall;
-    width: $imageSmall;
-    object-fit: cover;
-}
-
 .table-animali {
     border: 1px solid darken($baseColor, 5%);
     border-radius: $borderRadius;

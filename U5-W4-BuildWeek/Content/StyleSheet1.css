@@ -232,10 +232,6 @@ input[type=text] {
   text-transform: uppercase;
 }
 
-img {
-  object-fit: cover;
-}
-
 .table-animali {
   border: 1px solid #327a81;
   border-radius: 10px;
