@@ -1,40 +1,38 @@
-﻿@model U5_W4_BuildWeek.Models.DbModels.MedicinaliVendite
+﻿
+@model U5_W4_BuildWeek.Models.DbModels.MedicinaliVendite
 
-@{
-    ViewBag.Title = "Acquista";
-}
 
-<h2>Acquista</h2>
+<div>
+    <h2 class="text-success">Riepilgo Acquisto</h2>
+    <h4>@ViewBag.NomeMedicinale</h4>
+    <p>Prezzo: <strong>@string.Format("{0:C}", ViewBag.PrezzoMedicinale) </strong> </p>
+    <hr />
+</div>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
-<div class="form-horizontal">
-    <h4>MedicinaliVendite</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.Label("Ricetta ")
-        @Html.TextBox("ricetta", null, new { @class = "form-control" })
-    </div>
+    
+
+    <div class="form-horizontal">
 
 
-    <div class="form-group">
-        @Html.Label("Codice Fiscale Utente")
-        @Html.TextBox("codiceFiscale", null, new { @class = "form-control" })
-    </div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.Label("Ricetta ")
+            @Html.TextBox("ricetta", null, new { @class = "form-control" })
+        </div>
 
+        <div class="form-group">
+            @Html.Label("Codice Fiscale Utente")
+            @Html.TextBox("codiceFiscale", null, new { @class = "form-control" })
+        </div>
 
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Conferma Acquisto" class="btn btn-outline-success mt-2" />
+            </div>
         </div>
     </div>
-</div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

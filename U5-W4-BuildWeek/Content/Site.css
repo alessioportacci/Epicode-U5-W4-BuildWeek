@@ -18,3 +18,67 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/*Farmacia */
+
+.product-section {
+    margin-top: 20px;
+}
+
+.product-container {
+    display: flex;
+}
+
+.filter-panel {
+    width: 200px;
+    padding: 10px;
+    box-shadow: 2px 2px 5px #888888;
+    background-color: white;
+    text-align: left;
+    height: 320px; 
+}
+
+.filter-button {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.product-list {
+    flex: 1;
+    text-align: left;
+}
+
+    .product-list hr {
+        margin: 10px 0;
+    }
+
+.product-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 10px 0;
+    border-bottom: solid 1px gainsboro ;
+}
+
+.product-details {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.product-button {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    align-self: flex-end;
+    text-align: right;
+}
+
+
+.add-to-cart {
+    font-weight: bold;
+}
+
+
+.product-price {
+    font-weight: bold;
+}

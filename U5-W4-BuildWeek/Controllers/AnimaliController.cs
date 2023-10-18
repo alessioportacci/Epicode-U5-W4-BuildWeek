@@ -92,7 +92,7 @@ namespace U5_W4_BuildWeek.Controllers
                 }
                 db.Entry(animale).State = EntityState.Modified;
                 db.SaveChanges();
-                return View(animale);
+                return RedirectToAction("Index");
             }
             return View(animale);
         }

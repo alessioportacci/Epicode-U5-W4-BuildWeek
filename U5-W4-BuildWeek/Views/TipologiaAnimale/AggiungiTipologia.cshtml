@@ -4,31 +4,31 @@
     ViewBag.Title = "AggiungiTipologia";
 }
 
-<h2>AggiungiTipologia</h2>
+<h2 class="titolo">Aggiungi tipologia</h2>
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
+<div class="wrapper fadeInDown">
 
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Tipologia, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Tipologia, new { htmlAttributes = new { @class = "form-control" } })
+
+    @using (Html.BeginForm("AggiungiTipologia", "TipologiaAnimale", FormMethod.Post, new { id = "formContent", enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <p><span class="star">* </span>CAMPI RICHIESTI</p>
+
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label for="Tipologia" class="label-form">@Html.Raw("<strong>Tipologia</strong><span class='star'> *</span>")</label>
+                @Html.TextBoxFor(model => model.Tipologia)
                 @Html.ValidationMessageFor(model => model.Tipologia, "", new { @class = "text-danger" })
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Aggiungi" class="btn btn-primary my-3" />
+                </div>
             </div>
         </div>
-    </div>
-}
+    }
 
-<div>
-    @Html.ActionLink("Torna a lista tipologie", "Tipologie")
 </div>
