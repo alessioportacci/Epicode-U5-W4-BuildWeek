@@ -1,35 +1,47 @@
 ﻿@model IEnumerable<U5_W4_BuildWeek.Models.DbModels.Ditte>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Elenco Ditte";
 }
-<a href="@Url.Action("CreaDitta")" class="btn btn-warning">Create</a>
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Recapito</th>
-            <th>Indirizzo</th>
-            <th>Modifica</th>
-            <th>Elimina</th>
-          
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var d in Model)
-        {
-            <tr>
-                <td>@d.Nome</td>
-                <td>@d.Indirizzo</td>
-                <td>@d.Recapito</td>
-              
-                <td>
-                    <a href="@Url.Action("ModificaDitta", new { id = d.Id })" class="btn btn-warning">Modifica</a>
-                </td>
-                <td>
-                    <a href="@Url.Action("EliminaDitta", new { id = d.Id })" class="btn btn-danger">Elimina</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+
+<div class="container my-3">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow">
+                <div class="card-header">
+                    <h2>Elenco Ditte</h2>
+                </div>
+                <div class="card-body">
+                    <a href="@Url.Action("CreaDitta")" class="btn btn-warning mb-3">Crea Ditta</a>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Recapito</th>
+                                <th>Indirizzo</th>
+                                <th>Modifica</th>
+                                <th>Elimina</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var d in Model)
+                            {
+                                <tr>
+                                    <td>@d.Nome</td>
+                                    <td>@d.Recapito</td>
+                                    <td>@d.Indirizzo</td>
+                                    <td>
+                                        <a href="@Url.Action("ModificaDitta", new { id = d.Id })" class="btn btn-warning">Modifica</a>
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("EliminaDitta", new { id = d.Id })" class="btn btn-danger">Elimina</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
