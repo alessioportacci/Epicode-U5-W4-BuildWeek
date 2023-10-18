@@ -27,6 +27,12 @@ namespace U5_W4_BuildWeek.Controllers
             return View(animale);
         }
 
+        [AllowAnonymous]
+        public PartialViewResult StoriaMedica(int id)
+        {
+            return PartialView(db.Visite.Where(v => v.FkAnimale == id));
+        }
+
 
         [HttpGet]
         public ActionResult RegistraAnimale()

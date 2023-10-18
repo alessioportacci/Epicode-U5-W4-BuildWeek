@@ -240,6 +240,7 @@
     <Content Include="Views\Animali\DettaglioAnimale.cshtml" />
     <Content Include="Views\Ricoveri\Rimborsi.cshtml" />
     <Content Include="Views\Animali\Index.cshtml" />
+    <Content Include="Views\Animali\StoriaMedica.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
