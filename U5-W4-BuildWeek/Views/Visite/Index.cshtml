@@ -4,6 +4,21 @@
     ViewBag.Title = "Index";
 }
 
+<h3> Filtri </h3>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.Label("Microchip", new { @class = "d-block" })
+    @Html.Editor("Microchip", new { htmlAttributes = new { @class = "from-control", @Placeholder = "Inserire Microchip" } })
+
+    @Html.Label("Nome", "Nome Animale" , new { @class = "d-block" })
+    @Html.Editor("Nome", new { htmlAttributes = new { @class = "from-control", @Placeholder = "Inserire nome animale" } })
+
+    <input type="submit" value="Cerca" class="btn btn-primary d-block" />
+}
+
 <h2>Lista Visite</h2>
 
 @*<p>
@@ -12,7 +27,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Animali.Nome)
+            Paziente
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DataVisita)
@@ -30,6 +45,10 @@
     {
         <tr>
             <td>
+                @if (item.Animali.Microchip != null || item.Animali.Microchip != null)
+                {
+                    <span> @item.Animali.Microchip - </span>
+                }
                 @Html.DisplayFor(modelItem => item.Animali.Nome)
             </td>
             <td>
