@@ -68,7 +68,7 @@ function RicoveriList() {
                     <th>Giorni trascorsi</th>
                     <th>Data nascita presunta</th>
                     <th>MicroChip</th>
-                    <th>Razza</th>
+                    <th>Tipo</th>
                 </tr>`
 
                 $("#tabdati").append(thead)

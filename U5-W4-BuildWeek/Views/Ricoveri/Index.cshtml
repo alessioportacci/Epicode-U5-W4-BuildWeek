@@ -3,42 +3,50 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="table-container">
+    <h2 class="titolo">Ricoveri</h2>
 
-<button onclick="filtra()"> filtra </button>
 
-
-@foreach (U5_W4_BuildWeek.Models.DbModels.AnimaliTipologia razza in ViewBag.Tipologie)
-{
-    <input type="checkbox" id="@razza.Id" />
-    <label for="@razza.Id"> @razza.Tipologia</label>
-    <br>
-}
-
-<div id="agg"></div>
-
-@if (User.IsInRole("Admin") || User.IsInRole("Veterinario"))
-{
-    <div class="d-flex justify-content-center">
-        <button onclick="RicoveriList()" class="btn btn-primary my-3 siteButton"> Ottieni tutti i ricoveri </button>
+    <div class="cb-container">
+        <ul class="iconUl">
+            @foreach (U5_W4_BuildWeek.Models.DbModels.AnimaliTipologia razza in ViewBag.Tipologie)
+            {
+                <li>
+                    <label for="@razza.Id" class="cb-label">
+                        <input type="checkbox" id="@razza.Id">
+                        <div class="icon-box">
+                            <i class="fa-solid fa-paw icon" style="color: #7ca2e4;" aria-hidden="true"></i>
+                        </div>
+                        <p>@razza.Tipologia</p>
+                    </label>
+                </li>
+            }
+        </ul>
+        <div class="d-flex justify-content-center">
+            <button onclick="filtra()" class="btn btn-primary siteButton"> Filtra </button>
+        </div>
     </div>
-}
 
-<div id="tab" class="table-container d-none">
-    <div class="table-animali">
-        <div class="header">Ricovero animali</div>
-        <table id="tabdati">
-            <tr>
-                <th>Nome</th>
-                <th>Inizio Ricovero</th>
-                <th>Giorni trascorsi</th>
-                <th>Data nascita presunta</th>
-                <th>MicroChip</th>
-                <th>Razza</th>
-            </tr>
-        </table>
+
+    <div id="agg"></div>
+
+    @if (User.IsInRole("Admin") || User.IsInRole("Veterinario"))
+    {
+        <div class="d-flex justify-content-center my-4">
+            <button onclick="RicoveriList()" class="btn btn-primary my-3 siteButton"> Ottieni tutti i ricoveri </button>
+        </div>
+    }
+
+    <div id="tab" class="d-none">
+        <div class="table-ricoveri">
+            <div class="header">Ricovero animali</div>
+            <table id="tabdati">
+            </table>
+        </div>
     </div>
+    <div class="pb-5"></div>
 </div>
+
 
 @section scripts
 {
