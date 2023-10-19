@@ -262,6 +262,7 @@
     <Content Include="Views\Visite\Index.cshtml" />
     <Content Include="Views\Visite\Create.cshtml" />
     <Content Include="Views\Visite\Edit.cshtml" />
+    <Content Include="Views\Home\Profilo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

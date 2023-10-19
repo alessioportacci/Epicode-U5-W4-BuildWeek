@@ -4,22 +4,17 @@
     ViewBag.Title = "Index";
 }
 
+<div class="table-container">
 
+    <div class="aggiungi">
+    </div>
+    <div class="table-animali">
+        <div class="header">Registro utenti</div>
 
-
-
-<div class="table-visite">
-
-    <div class="headV" >Utenti</div>
-
-    <table>
-        <tbody>
+        <table class="">
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.Username)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Password)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Nome)
@@ -46,10 +41,6 @@
                         @Html.DisplayFor(modelItem => item.Username)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Password)
-
-                    </td>
-                    <td>
                         @Html.DisplayFor(modelItem => item.Nome)
                     </td>
                     <td>
@@ -65,17 +56,15 @@
                         @Html.DisplayFor(modelItem => item.Ruolo)
                     </td>
                     <td>
-                    
                         <a href="@Url.Action("Edit", new { id = item.Id })"><i class="fa-solid fa-pencil table-icon"></i></a>
-                    
                         <a href="@Url.Action("Details", new { id = item.Id })"><i class="fa-solid fa-magnifying-glass table-icon"></i></a>
-
                         <a href="@Url.Action("Delete", new { id = item.Id })"><i class="fa-solid fa-trash-can table-icon"></i></a>
-
                     </td>
                 </tr>
             }
-        </tbody>
 
-    </table>
+        </table>
+    </div>
+    <div class="pb-5"></div>
+
 </div>

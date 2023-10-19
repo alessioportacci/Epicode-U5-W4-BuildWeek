@@ -48,8 +48,8 @@
                     @if (User.IsInRole("Admin"))
                     {
                         <td>
-                            @Html.ActionLink("Modifica", "Edit", "Visite", new { area = "", id = item.Id }, null) |
-                            @Html.ActionLink("Elimina", "Delete", "Visite", new { id = item.Id }, null)
+                            <a href="@Url.Action("Edit", "Visite", new { area = "", id = item.Id })"><i class="fa-solid fa-pencil table-icon"></i></a>
+                            <a href="@Url.Action("Delete", "Visite", new { area = "", id = item.Id })"><i class="fa-solid fa-trash-can table-icon"></i></a>
                         </td>
                     }
                 </tr>

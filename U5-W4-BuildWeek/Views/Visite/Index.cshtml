@@ -4,29 +4,30 @@
     ViewBag.Title = "Index";
 }
 
-<div class="d-flex justify-content-center  mt-3"  >
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h3> Filtri </h3>
+<div class="p-3 px-5 table-container">
 
-            @using (Html.BeginForm())
-            {
-                @Html.AntiForgeryToken()
 
-                @Html.Label("Microchip", new { @class = "d-block" })
-                @Html.Editor("Microchip", new { htmlAttributes = new { @class = "from-control", @Placeholder = "Inserire Microchip" } })
+    <div class="d-flex justify-content-center  mt-3">
+        <div class="card" style="width: 19rem;">
+            <div class="card-body text-center">
+                <h3> Filtri </h3>
 
-                @Html.Label("Nome", "Nome Animale", new { @class = "d-block" })
-                @Html.Editor("Nome", new { htmlAttributes = new { @class = "from-control", @Placeholder = "Inserire nome animale" } })
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
 
-                <input type="submit" value="Cerca" class="btn btn-primary d-block" />
-            }
+                    @Html.Label("Microchip", new { @class = "d-block" })
+                    @Html.Editor("Microchip", new { htmlAttributes = new { @class = "from-control", @Placeholder = "Inserire Microchip" } })
+
+                    @Html.Label("Nome", "Nome Animale", new { @class = "d-block" })
+                    @Html.Editor("Nome", new { htmlAttributes = new { @class = "from-control", @Placeholder = "Inserire nome animale" } })
+
+                    <input type="submit" value="Cerca" class="btn btn-primary m-1" />
+                }
+            </div>
         </div>
     </div>
-</div>
-    @*<p>
-            @Html.ActionLink("Aggiungi una visita", "Create")
-        </p>*@
+
     <div class="table-visite">
 
         <div class="headV">Visite</div>
@@ -38,13 +39,13 @@
                         Paziente
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.DataVisita)
+                        Data Visita
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.EsameObbiettivo)
+                        Esame
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.DescrizioneCura)
+                        Descrizione
                     </th>
                     <th></th>
                 </tr>
@@ -71,8 +72,8 @@
                             @Html.DisplayFor(modelItem => item.DescrizioneCura)
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "Edit", "Visite", new { area = "", id = item.Id }, null) |
-                            @Html.ActionLink("Delete", "Delete", "Visite", new { area = "", id = item.Id }, null)
+                            <a href="@Url.Action("Edit", new { id = item.Id })"><i class="fa-solid fa-pencil table-icon"></i></a>
+                            <a href="@Url.Action("Delete", new { id = item.Id })"><i class="fa-solid fa-trash-can table-icon"></i></a>
                         </td>
                     </tr>
                 }
@@ -80,6 +81,5 @@
         </table>
 
     </div>
-    @*<p>
-            @Html.ActionLink("Aggiungi una visita", "Create")
-        </p>*@
+
+</div>

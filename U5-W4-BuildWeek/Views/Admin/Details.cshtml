@@ -4,83 +4,85 @@
     ViewBag.Title = "Details";
 }
 
-@*<h2 class="text-center" >Details</h2>*@
+<h1 class="m-3">
+
+</h1>
 
 
-<div class="d-flex justify-content-center  mt-3 text-center">
-    <div class="card" style="width: 18rem;">
+<div class="p-3 px-5 table-container">
+    <div class="row align-items-center justify-content-center rounded" style="background-color: rgb(255, 255, 255, 0.92);">
 
-        <div class="card-body">
-            <h4>Utenti</h4>
-            <hr />
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Username)
-                </dt>
-
+        @* Info *@
+        <div class="col-12">
+            <h3>
+                <i class="fa fa-user" aria-hidden="true"></i>
+                @Model.Username
+            </h3>
 
 
-                <dd>
-                    @Html.DisplayFor(model => model.Username)
-                </dd>
+            <div class="row row-cols-1 row-cols-2 mx-4 mb-4">
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Password)
-                </dt>
+                @* Nome *@
+                <div>
+                    <div class="fw-bold">
+                        Nome
+                    </div>
+                    <div>
+                        @Html.DisplayFor(model => model.Nome)
+                    </div>
+                </div>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Password)
-                </dd>
+                @* CF *@
+                <div>
+                    <div class="fw-bold">
+                        Codice Fiscale
+                    </div>
+                    <div>
+                        @Html.DisplayFor(model => model.CF)
+                    </div>
+                </div>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Nome)
-                </dt>
+                @* Numero *@
+                <div>
+                    <div class="fw-bold">
+                        @Html.DisplayNameFor(model => model.Telefono)
+                    </div>
+                    <div>
+                        @Html.DisplayFor(model => model.Telefono)
+                    </div>
+                </div>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Nome)
-                </dd>
+                @* Email *@
+                <div>
+                    <div class="fw-bold">
+                        @Html.DisplayNameFor(model => model.Email)
+                    </div>
+                    <div>
+                        @Html.DisplayFor(model => model.Email)
+                    </div>
+                </div>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.CF)
-                </dt>
+                @* Ruolo *@
+                <div>
+                    <div class="fw-bold">
+                        @Html.DisplayNameFor(model => model.Ruolo)
+                    </div>
+                    <div>
+                        @Html.DisplayFor(model => model.Ruolo)
+                    </div>
+                </div>
+            </div>
 
-                <dd>
-                    @Html.DisplayFor(model => model.CF)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Telefono)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Telefono)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Email)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Email)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Ruolo)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Ruolo)
-                </dd>
-
-            </dl>
         </div>
+
+
+        <p class="btn btn-outline-dark w-25">
+            @Html.ActionLink("Reset della password*", "Reset", new { id = Model.Id }, new {@class = new { @class = "text-reset text-decoration-none" } }) 
+        </p>
+        <p style="font-size:10px"> *la password resettata diventerà "password123!" </p>
+
     </div>
+
+
+
 </div>
-
-
-
-
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
