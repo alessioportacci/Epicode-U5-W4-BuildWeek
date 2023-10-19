@@ -176,6 +176,7 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\Home\Dog_and_bones_pattern.jpg" />
+    <Content Include="Content\Home\login.jpg" />
     <Content Include="Content\Home\logo.png" />
     <Content Include="Content\Home\pronto.png" />
     <Content Include="Content\Home\veterinario.png" />
