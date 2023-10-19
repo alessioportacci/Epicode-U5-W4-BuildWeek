@@ -17,16 +17,29 @@
 
 @if (User.IsInRole("Admin") || User.IsInRole("Veterinario"))
 {
-    <button onclick="RicoveriList()"> Ottieni tutti i ricoveri </button>
+    <div class="d-flex justify-content-center">
+        <button onclick="RicoveriList()" class="btn btn-primary my-3 siteButton"> Ottieni tutti i ricoveri </button>
+    </div>
 }
 
-<div id="agg"></div>
-<table id="tab" class='table d-none'>
-
-</table>
+<div id="tab" class="table-container d-none">
+    <div class="table-animali">
+        <div class="header">Ricovero animali</div>
+        <table id="tabdati">
+            <tr>
+                <th>Nome</th>
+                <th>Inizio Ricovero</th>
+                <th>Giorni trascorsi</th>
+                <th>Data nascita presunta</th>
+                <th>MicroChip</th>
+                <th>Razza</th>
+            </tr>
+        </table>
+    </div>
+</div>
 
 @section scripts
 {
-        <script src="~/Scripts/MyScripts/RicoveriIndex.js"></script>
+    <script src="~/Scripts/MyScripts/RicoveriIndex.js"></script>
 }
 

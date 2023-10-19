@@ -41,7 +41,7 @@ namespace U5_W4_BuildWeek.Controllers
                         Nome = animale.Nome,
                         Foto = animale.Foto,
                         Colore = animale.Colore,
-                        DataNascita = animale.DataNascita.Value.ToString(),
+                        DataNascita = animale.DataNascita.HasValue ? animale.DataNascita.Value.ToString() : "-",
                         Microchip = animale.Microchip,
                         Tipologia = animale.AnimaliTipologia.Tipologia,
                     });
@@ -62,7 +62,7 @@ namespace U5_W4_BuildWeek.Controllers
                     Nome = animale.Nome,
                     Foto = animale.Foto,
                     Colore = animale.Colore,
-                    DataNascita = animale.DataNascita.Value.ToString(),
+                    DataNascita = animale.DataNascita.HasValue ? animale.DataNascita.Value.ToString() : "-",
                     Microchip = animale.Microchip,
                     Tipologia = animale.AnimaliTipologia.Tipologia,
                 });
