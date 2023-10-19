@@ -388,3 +388,22 @@ table {
         margin: 0;
     }
 }
+.table-1{
+    position: relative;
+}
+
+.table-1::before {
+    content: "";
+    background-image: url(Imgs/hand-drawn-pet-grooming-pattern_23-2150016011.png);
+    height :100vh;
+    opacity: 0.8;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+}
+.tableTr {
+     background-color: rgb(255, 255, 255, 0.92) !important;
+}

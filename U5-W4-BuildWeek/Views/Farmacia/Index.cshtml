@@ -5,74 +5,77 @@
 }
 <link href="~/Content/Site.css" rel="stylesheet" />
 
-
-<div class="container">
-    <div class="row product-section">
-        <div class="col-12">
-            <h2>Prodotti</h2>
-        </div>
-        <div class="col-12 product-container">
-            <div class="filter-panel mx-3 my-3">
-                <h4>Filtri:</h4>
-                <!-- Pulsanti di filtro -->
-                <button class="btn btn-light filter-button" data-category="medicinal">Medicinali</button>
-                <button class="btn btn-light filter-button" data-category="food">Alimentari</button>
-                <button class="btn btn-light filter-button" data-category="all">Tutti</button>
+<div class="table-1 mb-5">
+    <div class="container ">
+        <div class="row product-section">
+            <div class="col-12">
+                <h2>Prodotti</h2>
             </div>
-            <div class="product-list">
-                @foreach (U5_W4_BuildWeek.Models.DbModels.Medicinali m in Model)
-                {
-                    <div class="product-box py-2" data-categories="@((m.Medicinale ? "medicinal " : "food "))">
-                        <div class="product-details">
-                            <h3>@m.Nome</h3>
-                            <p>@m.Descrizione</p>
-                        </div>
-                        <div class="product-button">
-                            <div class="product-price">@string.Format("{0:C}", m.Costo)</div>
-                            <div class="add-to-cart">
-                                <strong>Tipologia:</strong>
-                                @if (m.Medicinale)
-                                {
-                                    <span>Medicinale</span>
-                                }
-                                else
-                                {
-                                    <span>Alimento</span>
-                                }
-                            </div>
-                            <div style="text-align: right;">
-                                <!-- Allinea il pulsante a destra -->
-                                <a href="javascript:void(0);" class="btn btn-primary acquista-link" data-id="@m.Id">Aggiungi al Carrello</a>
-                            </div>
-                        </div>
+            <div class="tableTr">
+                <div class="col-12 product-container">
+                    <div class="filter-panel mx-3 my-3">
+                        <h4>Filtri:</h4>
+                        <!-- Pulsanti di filtro -->
+                        <button class="btn btn-light filter-button" data-category="medicinal">Medicinali</button>
+                        <button class="btn btn-light filter-button" data-category="food">Alimentari</button>
+                        <button class="btn btn-light filter-button" data-category="all">Tutti</button>
                     </div>
-                }
 
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Acquista</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div id="acquista-partial-view">
-                    <!-- Qui verrà caricata la partial view -->
+                    <div class="product-list w-75 mx-auto">
+                        @foreach (U5_W4_BuildWeek.Models.DbModels.Medicinali m in Model)
+                        {
+                            <div class="product-box py-2" data-categories="@((m.Medicinale ? "medicinal " : "food "))">
+                                <div class="product-details">
+                                    <h3>@m.Nome</h3>
+                                    <p>@m.Descrizione</p>
+                                </div>
+                                <div class="product-button">
+                                    <div class="product-price">@string.Format("{0:C}", m.Costo)</div>
+                                    <div class="add-to-cart">
+                                        <strong>Tipologia:</strong>
+                                        @if (m.Medicinale)
+                                        {
+                                            <span>Medicinale</span>
+                                        }
+                                        else
+                                        {
+                                            <span>Alimento</span>
+                                        }
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <!-- Allinea il pulsante a destra -->
+                                        <a href="javascript:void(0);" class="btn btn-primary acquista-link" data-id="@m.Id">Aggiungi al Carrello</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-                
+        </div>
+    </div>
+    <div class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Acquista</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="acquista-partial-view">
+                        <!-- Qui verrà caricata la partial view -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+
+                </div>
             </div>
         </div>
     </div>
+
 </div>
-
-
 @section scripts{
     <script>
        
