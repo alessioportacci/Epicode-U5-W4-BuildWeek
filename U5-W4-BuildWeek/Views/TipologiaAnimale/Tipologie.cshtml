@@ -4,29 +4,46 @@
     ViewBag.Title = "Tipologie";
 }
 
-<h2>Tipologie</h2>
 
-<p>
-    @Html.ActionLink("Aggiungi Tipologia", "AggiungiTipologia")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Tipologia)
-        </th>
-        <th>Gestione</th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tipologia)
-        </td>
-        <td>
-            @Html.ActionLink("Modifica", "ModificaTipologia", new { id=item.Id }) |
-            @Html.ActionLink("Elimina", "EliminaTipologia", new { id=item.Id })
-        </td>
-    </tr>
-}
 
-</table>
+<div class="table-container">
+    <div class="aggiungi">
+        <a href="@Url.Action("AggiungiTipologia")"><i class="fa-regular fa-square-plus add-icon"></i></a>
+    </div>
+
+    <div class="table-animali w-25">
+        <div class="header">Registro Tipologie</div>
+
+        <table>
+            <tr>
+                <th></th>
+      
+                <th>Tipologia</th>
+              
+          
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                           
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tipologia)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("ModificaTipologia", new { id = item.Id })"><i class="fa-solid fa-pencil table-icon"></i></a>
+                     
+                        <a href="@Url.Action("EliminaTipologia", new { id = item.Id })"><i class="fa-solid fa-trash-can table-icon"></i></a>
+
+                   
+                    </td>
+             
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="pb-5"></div>
+</div>

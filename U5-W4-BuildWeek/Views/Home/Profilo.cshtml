@@ -1,77 +1,79 @@
 ﻿@model U5_W4_BuildWeek.Models.DbModels.Utenti
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Profilo";
 }
 
+
+
 <section class="form-container">
-
-
-    <h2 class="titolo">Modifica @Model.Username</h2>
+    <h2 class="titolo">Ciao @Model.Username </h2>
 
     <div class="wrapper fadeInDown">
 
-        @using (Html.BeginForm("Edit", "Admin", FormMethod.Post, new { id = "formContent" }))
+        @using (Html.BeginForm("Profilo", "Home", FormMethod.Post, new { id = "formContent", enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
 
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
             <p><span class="star">* </span>CAMPI RICHIESTI</p>
 
-
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.Id)
-
-
             <div class="form-group">
-                <label for="Username" class="label-form">@Html.Raw("<strong>Username</strong><span class='star'> *</span>")</label>
+                <label for="Username" class="label-form"><strong>Username</strong><span class="star"> *</span></label>
                 @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
             </div>
-
             <div class="form-group">
-                <label for="Password" class="label-form">@Html.Raw("<strong>Password</strong><span class='star'> *</span>")</label>
+                <label for="Password" class="label-form"><strong>Password</strong><span class="star"> *</span></label>
                 @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             </div>
-
             <div class="form-group">
-                <label for="Nome" class="label-form">@Html.Raw("<strong>Nome</strong>")</label>
+                <label for="Nome" class="label-form"><strong>Nome</strong><span class="star"> *</span></label>
                 @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
             </div>
-
             <div class="form-group">
-                <label for="CF" class="label-form">@Html.Raw("<strong>Codice Fiscale</strong>")</label>
+                <label for="CodiceFiscale" class="label-form"><strong>Codice Fiscale</strong><span class="star"> *</span></label>
                 @Html.EditorFor(model => model.CF, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.CF, "", new { @class = "text-danger" })
             </div>
-
             <div class="form-group">
-                <label for="Telefono" class="label-form">@Html.Raw("<strong>Telefono</strong>")</label>
+                <label for="Telefono" class="label-form"><strong>Telefono</strong><span class="star"> *</span></label>
                 @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger" })
             </div>
-
             <div class="form-group">
-                <label for="Email" class="label-form">@Html.Raw("<strong>Email</strong>")</label>
+                <label for="Email" class="label-form"><strong>Email</strong><span class="star"> *</span></label>
                 @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-group">
-                <label for="Ruolo" class="label-form">@Html.Raw("<strong>Ruolo</strong>")</label>
-                @Html.DropDownListFor(model => model.Ruolo, (SelectList)ViewBag.Ruoli)
-                @Html.ValidationMessageFor(model => model.Ruolo, "", new { @class = "text-danger" })
+                <label for="Ruolo" class="label-form"><strong>Ruolo</strong></label>
+                @Html.HiddenFor(model => model.Ruolo)
+            <input class="form-control" type="text" value="@Model.Ruolo" readonly />
             </div>
 
+
+
+
+
             <div class="form-group">
-                    <input type="submit" value="Modifica" class="btn btn-default" />
+                <input type="submit" value="Salva modifiche" class="btn btn-primary my-3" />
+                <div class="w-50 fs-6">
+                    <p class="text-secondary">
+                        Dopo aver salvato le modifiche, sarà necessario effettuare nuovamente l'accesso
+                    </p>
+                </div>
+            </div>
+
+        
+
+            <div class="form-group">
+                @Html.ActionLink("Torna indietro", "ListaDitte", null, new { @class = "backLink" })
             </div>
         }
     </div>
-
 </section>
-
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }

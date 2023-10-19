@@ -63,7 +63,6 @@
                         @Html.DisplayFor(modelItem => item.Utenti.Nome)
                     </td>
                     <td>
-
                         <a href="@Url.Action("ModificaAnimale", new { id = item.Id })"><i class="fa-solid fa-pencil table-icon"></i></a>
                         <a href="@Url.Action("DettaglioAnimale", new { id = item.Id })"><i class="fa-solid fa-magnifying-glass table-icon"></i></a>
                         <a href="@Url.Action("EliminaAnimale", new { id = item.Id })"><i class="fa-solid fa-trash-can table-icon"></i></a>

@@ -82,3 +82,25 @@ textarea {
 .product-price {
     font-weight: bold;
 }
+
+/*style visite*/
+.table-visite {
+    font-family: "Poppins", sans-serif;
+    border-radius: 10px 10px 10px 10px;
+    background: #fff;
+    box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+    max-width: calc(100% - 2em);
+    margin: 2em auto 0 auto;
+    overflow: hidden;
+    width: 90%;
+    margin-bottom:4rem
+}
+
+.headV {
+    background-color: #56baed;
+    color: white;
+    font-size: 1.1em;
+    padding: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+}

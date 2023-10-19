@@ -2,7 +2,7 @@
 {
 
     $("#tab").empty()
-    $("#tab").addClass("d-none")
+    $("#main-tab").addClass("d-none")
 
 
     //Mi prendo le checkbox
@@ -25,14 +25,17 @@
                 $("#agg").empty()
                 $.each(animali, function (i, item) {
                     let card =
-                        "<div class='card' style='width: 18rem;'>" +
-                        "<img src ='./Content/Imgs/Animali/" + item.Foto + "' class='card-img-top' alt = '..'>" +
-                        "<div class='card-body'> " +
-                        "<h5 class='card-title'>" + item.Nome + "</h5> " +
-                        "<p class='card-text'>" + item.Colore + "</p>" +
-                        "<a href='Animali/DettaglioAnimale/" + item.Id + "' class='btn btn-primary'>Storia medica</a> " +
-                        "</div>" +
+                        "<div class='p-2 px-3'>" +
+                            "<div class='card' style='width:'>" +
+                                "<img src ='./Content/Imgs/Animali/" + item.Foto + "' class='card-img-top w-100' alt = '..'>" +
+                                "<div class='card-body'> " +
+                                    "<h5 class='card-title'>" + item.Nome + "</h5> " +
+                                    "<p class='card-text'>" + item.Colore + "</p>" +
+                                    "<a href='Animali/DettaglioAnimale/" + item.Id + "' class='btn btn-outline-dark m-auto'>Storia medica</a> " +
+                                "</div>" +
+                            "</div>" +
                         "</div>"
+
 
 
                     $("#agg").append(card)
@@ -48,7 +51,7 @@
 function RicoveriList() {
 
     $("#agg").empty()
-    $("#tab").removeClass("d-none")
+    $("#main-tab").removeClass("d-none")
     $("#tab").empty()
 
 

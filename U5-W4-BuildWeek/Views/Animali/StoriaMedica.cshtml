@@ -4,47 +4,60 @@
     ViewBag.Title = "StoriaMedica";
 }
 
-<h2>StoriaMedica</h2>
+<div style="background-color: rgba(86, 186, 237, 0.2)" class="p-3">
 
-<p>
-    @Html.ActionLink("Aggiungi visita", "Create", "Visite", new { area = "", id = @ViewBag.Id }, new {})
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.DataVisita)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EsameObbiettivo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DescrizioneCura)
-        </th>
-        @if (User.IsInRole("Admin"))
-        {
-            <th></th>
-        }
-    </tr>
+    @if (Model.Count() > 0)
+    {
+        <h2>
+            <i class="fa fa-heartbeat" aria-hidden="true"></i>
+            Storia medica
+        </h2>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataVisita)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EsameObbiettivo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DescrizioneCura)
-        </td>
-        @if (User.IsInRole("Admin"))
-        {
-            <td>
-                @Html.ActionLink("Edit", "Edit", "Visite", new { area="", id = item.Id }, null) |
-                @Html.ActionLink("Delete", "Delete", "Visite", new { id = item.Id }, null)
-            </td>
-        }
-        </tr>
-}
+        <p class="btn btn-outline-dark ">
+            <i class="fa-solid fa-plus"></i> @Html.ActionLink("Aggiungi visita", "Create", "Visite", new { area = "", id = @ViewBag.Id }, new { @class= "text-reset text-decoration-none" })
+        </p>
+        <table class="table p-3">
+            <tr>
+                <th>
+                    Data visita
+                </th>
+                <th>
+                    Esame
+                </th>
+                <th>
+                    Descrizione
+                </th>
+                @if (User.IsInRole("Admin"))
+                {
+                    <th></th>
+                }
+            </tr>
 
-</table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataVisita)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EsameObbiettivo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DescrizioneCura)
+                    </td>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <td>
+                            <a href="@Url.Action("Edit", "Visite", new { area = "", id = item.Id })"><i class="fa-solid fa-pencil table-icon"></i></a>
+                            <a href="@Url.Action("Delete", "Visite", new { area = "", id = item.Id })"><i class="fa-solid fa-trash-can table-icon"></i></a>
+                        </td>
+                    }
+                </tr>
+            }
+
+        </table>
+
+    }
+
+
+</div>

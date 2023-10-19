@@ -57,5 +57,16 @@ namespace U5_W4_BuildWeek.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public ActionResult Reset(int id)
+        {
+            Utenti user = db.Utenti.Find(id);
+            user.Password = "password123!";
+            db.Entry(user).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
     }
 }
