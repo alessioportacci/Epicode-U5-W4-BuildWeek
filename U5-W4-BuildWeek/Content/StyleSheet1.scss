@@ -479,3 +479,12 @@ table {
         margin: 0;
     }
 }
+
+@media (max-width: 992px) {
+    footer {
+        .contact-form {
+            width: auto !important;
+        }
+    }
+}
+
