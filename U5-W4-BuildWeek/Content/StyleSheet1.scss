@@ -1,6 +1,37 @@
 ﻿body {
 }
 
+/* NAVBAR */
+@media (min-width: 992px) {
+    #menuButton {
+        display: none !important;
+    }
+}
+
+@media (max-width: 992px) {
+    #divPrincipal{
+        justify-content: space-around !important;
+    }
+
+    #sidebar{
+        max-width: 60%;
+        #bodyMenu {
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: start !important;
+
+            .offcanvas-body {
+                padding: 0 !important;
+                margin-left: 0 !important;
+                flex-grow: unset;
+            }
+        }
+    }
+}
+
+
+/* NAVBAR */
+
 /* PAGINA LOGIN */
 #sectionLogin {
     .cascading-right {
@@ -30,19 +61,93 @@
 /* PAGINA REGISTER */
 
 /* PAGINA HOME */
+@media (max-width: 992px) {
+    .content {
+        margin: 1em 0 1em 0 !important;
+    }
+    .content1 {
+        margin: 0 !important;
+
+        h3 {
+            text-align: center;
+        }
+
+        div {
+            width: auto !important;
+        }
+    }
+    .content2 {
+        display: flex;
+        flex-direction: column;
+
+        img {
+            display: block !important;
+            max-height: 250px;
+        }
+
+        div {
+            width: auto !important;
+        }
+    }
+    .content3 {
+        display: flex;
+        flex-direction: column;
+
+        img {
+            display: block !important;
+            max-height: 250px;
+        }
+
+        div {
+            width: auto !important;
+        }
+    }
+    .content4 {
+        i{
+            display: none;
+        }
+
+        p {
+            font-size: 20px;
+        }
+
+        .text-end {
+            font-size: 20px;
+        }
+
+        img {
+            max-height: 300px;
+        }
+    }
+}
+
 #faqAnimali {
-    height: 20em;
-    background-image:url(templates/yootheme/cache/25/sfondo_articoli_piu_letti-25b62bfc.jpeg);
-    
     .card-body {
+        h5 {
+            font-size: 2em;
+        }
+
         a {
-            color: #0094ff;
+            color: black;
             text-decoration: none;
         }
     }
 
     .card-body a:hover {
         text-decoration: underline;
+    }
+
+    @media (max-width: 992px) {
+        div {
+            padding: 0 1em 0 1em !important;
+            margin: 1em 0 1em 0;
+        }
+
+        .card-body {
+            h5 {
+                text-align: center;
+            }
+        }
     }
 }
 
@@ -229,6 +334,20 @@ input[type=text] {
     border: 2px solid #f6f6f6;
     border-radius: 5px 5px 5px 5px;
 }
+input[type=password] {
+    background-color: #f6f6f6;
+    border: none;
+    color: #0d0d0d;
+    padding: 5px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px;
+    width: 85%;
+    border: 2px solid #f6f6f6;
+    border-radius: 5px 5px 5px 5px;
+}
 
 /* ANIMATIONS */
 
@@ -374,3 +493,31 @@ table {
         margin: 0;
     }
 }
+.table-1{
+    position: relative;
+}
+
+.table-1::before {
+    content: "";
+    background-image: url(Imgs/hand-drawn-pet-grooming-pattern_23-2150016011.png);
+    height :100vh;
+    opacity: 0.8;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+}
+.tableTr {
+     background-color: rgb(255, 255, 255, 0.92) !important;
+}
+
+@media (max-width: 992px) {
+    footer {
+        .contact-form {
+            width: auto !important;
+        }
+    }
+}
+

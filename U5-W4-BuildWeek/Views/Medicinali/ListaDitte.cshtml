@@ -3,59 +3,60 @@
 @{
     ViewBag.Title = "Elenco Ditte";
 }
-
-<div class="container my-3">
-    <div class="row">
-        <div class="col-md-2">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="text-center">Azioni</h4>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <a href="@Url.Action("CreaDitta")" class="btn btn-light btn-block">Crea Ditta</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="@Url.Action("Index")" class="btn btn-light btn-block">Medicinali</a>
-                        </li>
-                    </ul>
+<div class="table-1 mb-5 mt-3">
+    <div class="container my-3">
+        <div class="row">
+            <div class="col-md-2 mt-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="text-center">Azioni</h4>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <a href="@Url.Action("CreaDitta")" class="btn btn-light btn-block">Crea Ditta</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="@Url.Action("Index")" class="btn btn-light btn-block">Medicinali</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-10">
-            <div class="card shadow">
-                <div class="card-header">
-                    <h2>Elenco Ditte</h2>
-                </div>
-                <div class="card-body">
-                    <table class="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th>Nome</th>
-                                <th>Recapito</th>
-                                <th>Indirizzo</th>
-                                <th>Modifica</th>
-                                <th>Elimina</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var d in Model)
-                            {
+            </div> 
+            <div class="col-md-10 mt-4">
+                <div class="card shadow">
+                    <div class="card-header">
+                        <h2>Lista Fornitori</h2>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped table-hover">
+                            <thead>
                                 <tr>
-                                    <td>@d.Nome</td>
-                                    <td>@d.Recapito</td>
-                                    <td>@d.Indirizzo</td>
-                                    <td>
-                                        <a href="@Url.Action("ModificaDitta", new { id = d.Id })" class="btn btn-warning">Modifica</a>
-                                    </td>
-                                    <td>
-                                        <a href="@Url.Action("EliminaDitta", new { id = d.Id })" class="btn btn-danger">Elimina</a>
-                                    </td>
+                                    <th>Nome</th>
+                                    <th>Recapito</th>
+                                    <th>Indirizzo</th>
+                                    <th>Modifica</th>
+                                    <th>Elimina</th>
                                 </tr>
-                            }
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach (var d in Model)
+                                {
+                                    <tr>
+                                        <td>@d.Nome</td>
+                                        <td>@d.Recapito</td>
+                                        <td>@d.Indirizzo</td>
+                                        <td>
+                                            <a href="@Url.Action("ModificaDitta", new { id = d.Id })" class="btn btn-warning">Modifica</a>
+                                        </td>
+                                        <td>
+                                            <a href="@Url.Action("EliminaDitta", new { id = d.Id })" class="btn btn-danger">Elimina</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    </div>
