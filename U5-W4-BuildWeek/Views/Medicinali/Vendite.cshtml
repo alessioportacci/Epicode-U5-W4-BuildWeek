@@ -4,7 +4,6 @@
 }
 <div class="container text-center">
     <h2>Ricerca Vendite</h2>
-
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="search-container">
@@ -15,11 +14,10 @@
                 </div>
             </div>
         </div>
-
         <div class="col-md-6">
             <div class="search-container">
                 <div class="d-flex align-items-center">
-                    <label for="cf" class="mx-2">Inserisci il  Codice Fiscale:</label>
+                    <label for="cf" class="mx-2">Inserisci il Codice Fiscale:</label>
                     <input type="text" id="cf" placeholder="Codice Fiscale" class="form-control w-25" />
                     <button id="inviaNome" class="btn btn-primary ms-2"><i class="fas fa-search" style="color: #ffffff;"></i></button>
                 </div>
@@ -27,91 +25,98 @@
         </div>
     </div>
 
-    <div id="risultati" class="mt-4">
-        <div id="tableVendite">
+    <div id="risultati" class="mt-4 text-center">
+        <div id="tableVendite" >
             <p>Risultati della ricerca per data:</p>
-            <table class="table table-bordered table-striped table-hover">
+            
+            <table class="table table-bordered table-striped table-hover mx-auto text-center w-50 "  >
                 <thead>
                     <tr>
                         <th>Data della vendita</th>
                         <th>Prodotto venduto</th>
                     </tr>
                 </thead>
-                <tbody id="dettagliVenditaVendite"></tbody>
+                <tbody >
+                    <tr id="dettagliVenditaVendite" > </tr>
+                </tbody>
             </table>
         </div>
-
         <div id="tableCF" style="display: none;">
             <p>Risultati della ricerca per Codice Fiscale:</p>
-            <table class="table table-hover">
+            <table class="table table-bordered table-striped table-hover mx-auto text-center w-50">
                 <thead>
                     <tr>
                         <th>Data della vendita</th>
                         <th>Prodotto venduto</th>
                     </tr>
                 </thead>
-                <tbody id="dettagliVenditaCF"></tbody>
+                <tbody  class="text-center">
+                    <tr id="dettagliVenditaCF">
+
+                    </tr>
+                </tbody>
             </table>
         </div>
     </div>
+</div>
 
 
-    @section scripts {
-        <script>
-            $(document).ready(function () {
-                $('#cercaVendite').click(function () {
-                    var dataVendita = $('#dataVendita').val();
-                    $.ajax({
-                        type: "POST",
-                        url: "/Medicinali/Ricerca",
-                        data: { data: dataVendita },
-                        success: function (data) {
-                            $('#tableCF').hide();
-                            $('#tableVendite').show();
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $('#cercaVendite').click(function () {
+                var dataVendita = $('#dataVendita').val();
+                $.ajax({
+                    type: "POST",
+                    url: "/Medicinali/Ricerca",
+                    data: { data: dataVendita },
+                    success: function (data) {
+                        $('#tableCF').hide();
+                        $('#tableVendite').show();
 
-                            var dettagliVendita = $("#dettagliVenditaVendite");
-                            dettagliVendita.empty();
+                        var dettagliVendita = $("#dettagliVenditaVendite");
+                        dettagliVendita.empty();
 
-                            if (data.length > 0) {
-                                $.each(data, function (index, vendita) {
-                                    dettagliVendita.append('<tr>');
-                                    dettagliVendita.append('<td>' + vendita.Data + '</td>');
-                                    dettagliVendita.append('<td>' + vendita.Medicina + '</td>');
-                                    dettagliVendita.append('</tr>');
-                                });
-                            } else {
-                                dettagliVendita.html("Nessuna vendita trovata per la data specificata.");
-                            }
+                        if (data.length > 0) {
+                            $.each(data, function (index, vendita) {
+                            
+                                dettagliVendita.append('<td>' + vendita.Data + '</td>');
+                                dettagliVendita.append('<td>' + vendita.Medicina + '</td>');
+                            
+                            });
+                        } else {
+                            dettagliVendita.html("Nessuna vendita trovata per la data specificata.");
                         }
-                    });
-                });
-
-                $('#inviaNome').click(function () {
-                    var Cf = $('#cf').val();
-                    $.ajax({
-                        type: "POST",
-                        url: "/Medicinali/RicercaCF",
-                        data: { Cf: Cf },
-                        success: function (data) {
-                            $('#tableVendite').hide();
-                            $('#tableCF').show();
-
-                            var dettagliVendita = $("#dettagliVenditaCF");
-                            dettagliVendita.empty();
-
-                            if (data.length > 0) {
-                                $.each(data, function (index, vendita) {
-                                    dettagliVendita.append('<tr>');
-                                    dettagliVendita.append('<td>' + vendita.Data + '</td>');
-                                    dettagliVendita.append('<td>' + vendita.Medicina + '</td>');
-                                    dettagliVendita.append('</tr>');
-                                });
-                            } else {
-                                dettagliVendita.html("Nessun risultato trovato.");
-                            }
-                        }
-                    });
+                    }
                 });
             });
-        </script>
-    }
+
+            $('#inviaNome').click(function () {
+                var Cf = $('#cf').val();
+                $.ajax({
+                    type: "POST",
+                    url: "/Medicinali/RicercaCF",
+                    data: { Cf: Cf },
+                    success: function (data) {
+                        $('#tableVendite').hide();
+                        $('#tableCF').show();
+
+                        var dettagliVendita = $("#dettagliVenditaCF");
+                        dettagliVendita.empty();
+
+                        if (data.length > 0) {
+                            $.each(data, function (index, vendita) {
+                               
+                                dettagliVendita.append('<td>' + vendita.Data + '</td>');
+                                dettagliVendita.append('<td>' + vendita.Medicina + '</td>');
+                               
+                            });
+                        } else {
+                            dettagliVendita.html("Nessun risultato trovato.");
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}

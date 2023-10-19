@@ -264,6 +264,13 @@ input[type=text] {
   text-transform: uppercase;
 }
 
+img {
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+}
+
 .table-animali {
   font-family: "Poppins", sans-serif;
   border-radius: 10px 10px 10px 10px;

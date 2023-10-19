@@ -3,23 +3,30 @@
     ViewBag.Title = "Cerca";
 }
 
-<h2>Cerca</h2>
 
-<div>
-    <input type="text" id="nomeMedicinale" placeholder="Inserisci il nome del medicinale" />
-    <button id="inviaNome">Cerca</button>
-</div>
-<div id="risultati">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Posizione</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
-</div>
+<section class="form-container">
+    <h2 class="titolo">Cerca</h2>
+    <div class="wrapper fadeInDown">
+
+        <div id="formContent">
+            <div class="d-flex">
+                <input type="text" id="nomeMedicinale" placeholder="Inserisci il nome " />
+                <button class="w-25  btn btn-outline-success" id="inviaNome">Cerca</button>
+            </div>
+            <div id="risultati">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Posizione</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
 @section scripts {
 
     <script>

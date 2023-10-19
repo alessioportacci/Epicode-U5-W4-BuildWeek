@@ -4,48 +4,50 @@
     ViewBag.Title = "CreaDitta";
 }
 
-<h2>CreaDitta</h2>
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Ditte</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+
+<section class="form-container">
+    <h2 class="titolo">Registra Nuovo Fornitore</h2>
+
+    <div class="wrapper fadeInDown">
+
+        @using (Html.BeginForm("CreaDitta", "Medicinali", FormMethod.Post, new { id = "formContent", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <p><span class="star">* </span>CAMPI RICHIESTI</p>
+
+            <div class="form-group">
+                <label for="Nome" class="label-form"><strong>Nome</strong><span class="star"> *</span></label>
                 @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Recapito, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Recapito, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Recapito, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Indirizzo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="form-group">
+                <label for="Costo" class="label-form"><strong>Indirizzo</strong><span class="star"> *</span></label>
                 @Html.EditorFor(model => model.Indirizzo, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Indirizzo, "", new { @class = "text-danger" })
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="form-group">
+                <label for="Costo" class="label-form"><strong>Recapito</strong><span class="star"> *</span></label>
+
+                <div class="checkbox text-center">
+                    @Html.EditorFor(model => model.Recapito, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Recapito, "", new { @class = "text-danger" })
+                </div>
+
             </div>
-        </div>
-    </div>
-}
+            <div class="form-group">
+                <input type="submit" value="Registra Fornitore" class="btn btn-primary my-3" />
+            </div>
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+            <div class="form-group">
+                @Html.ActionLink("Torna indietro", "index", null, new { @class = "backLink" })
+            </div>
+        }
+    </div>
+</section>
