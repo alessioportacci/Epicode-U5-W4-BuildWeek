@@ -12,89 +12,104 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light p-3">
-        <div class="container-fluid justify-content-between">
-            <div class="d-flex">
-                @Html.ActionLink("Paws and Claws", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        <div id="divPrincipal" class="container-fluid d-flex justify-content-center">
+            <div>
+                @Html.ActionLink("Paws and Claws", "Index", "Home", new { area = "" }, new { @class = "navbar-brand m-0" })
             </div>
-            <ul class="navbar-nav flex-row d-none d-md-flex">
+            <button id="menuButton" class="navbar-toggler d-block" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title">Menu</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div id="bodyMenu" class="offcanvas-body d-flex justify-content-center">
+                    <div class="offcanvas-body" style="margin-left: auto">
+                        <ul id="navy" class="navbar-nav">
+                            @* Tutti tranne i farmacisti *@
+                            @if (!User.IsInRole("Farmacista"))
+                            {
+                                <li class="nav-item me-3 active">
+                                    @Html.ActionLink("Ricoveri Attivi", "Index", "Ricoveri", new { area = "" }, new { @class = "nav-link" })
+                                </li>
+                            }
 
-                @* Tutti tranne i farmacisti *@
-                @if (!User.IsInRole("Farmacista"))
-                {
-                    <li class="nav-item me-3 me-lg-1 active">
-                        @Html.ActionLink("Ricoveri Attivi", "Index", "Ricoveri", new { area = "" }, new { @class = "nav-link" })
-                    </li>
-                }
+                            @* Users o utenti non loggati *@
+                            @if (User.IsInRole("User") || !User.Identity.IsAuthenticated)
+                            {
+                                <li class="nav-item me-3 active">
+                                    @Html.ActionLink("Cerca Animale", "CercaAnimale", "Home", new { area = "" }, new { @class = "nav-link" })
+                                </li>
+                            }
 
-                @* Users o utenti non loggati *@
-                @if (User.IsInRole("User") || !User.Identity.IsAuthenticated)
-                {
-                    <li class="nav-item me-3 me-lg-1 active">
-                        @Html.ActionLink("Cerca Animale", "CercaAnimale", "Home", new { area = "" }, new { @class = "nav-link" })
-                    </li>
-                }
+                            @* Qualsiasi altro ruolo che non sia user *@
+                            else
+                            {
+                                @* Solo Veterinari / Admin *@
+                                if (User.IsInRole("Veterinario") || User.IsInRole("Admin"))
+                                {
+                                    <li class="nav-item me-3 active">
+                                        @Html.ActionLink("Animali", "Index", "Animali", new { area = "" }, new { @class = "nav-link" })
+                                    </li>
 
-                @* Qualsiasi altro ruolo che non sia user *@
-                else
-                {
-                    @* Solo Veterinari / Admin *@
-                    if (User.IsInRole("Veterinario") || User.IsInRole("Admin"))
-                    {
-                        <li class="nav-item me-3 me-lg-1 active">
-                            @Html.ActionLink("Animali", "Index", "Animali", new { area = "" }, new { @class = "nav-link" })
-                        </li>
+                                    <li class="nav-item me-3 active">
+                                        @Html.ActionLink("Visite", "Index", "Visite", new { area = "" }, new { @class = "nav-link" })
+                                    </li>
+                                }
 
-                        <li class="nav-item me-3 me-lg-1 active">
-                            @Html.ActionLink("Visite", "Index", "Visite", new { area = "" }, new { @class = "nav-link" })
-                        </li>
-                    }
+                                @* Solo Farmacisti / Admin *@
+                                if (User.IsInRole("Farmacista") || User.IsInRole("Admin"))
+                                {
+                                    <li class="nav-item me-3 active">
+                                        @Html.ActionLink("Farmacia", "Index", "Farmacia", new { area = "" }, new { @class = "nav-link" })
+                                    </li>
+                                    <li class="nav-item me-3 active">
+                                        @Html.ActionLink("Medicinali", "Index", "Medicinali", new { area = "" }, new { @class = "nav-link" })
+                                    </li>
+                                }
 
-                    @* Solo Farmacisti / Admin *@
-                    if (User.IsInRole("Farmacista") || User.IsInRole("Admin"))
-                    {
-                        <li class="nav-item me-3 me-lg-1 active">
-                            @Html.ActionLink("Farmacia", "Index", "Farmacia", new { area = "" }, new { @class = "nav-link" })
-                        </li>
-                        <li class="nav-item me-3 me-lg-1 active">
-                            @Html.ActionLink("Medicinali", "Index", "Medicinali", new { area = "" }, new { @class = "nav-link" })
-                        </li>
-                    }
-
-                    @* Solo Admin *@
-                    if (User.IsInRole("Admin"))
-                    {
-                        <li class="nav-item me-3 me-lg-1 active">
-                            @Html.ActionLink("Utenti", "Index", "Admin", new { area = "" }, new { @class = "nav-link" })
-                        </li>
-                    }
-                }
-            </ul>
-            <ul class="navbar-nav flex-row">
-                @if (!User.Identity.IsAuthenticated)
-                {
-                    <li class="nav-item me-3 me-lg-1">
-                        @Html.ActionLink("Login", "Login", "Home", new { area = "" }, new { @class = "nav-link" })
-                    </li>
-                }
-                else
-                {
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle d-flex justify-content-center align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp"
-                                 class="rounded-circle mx-1"
-                                 height="22"
-                                 alt="Black and White Portrait of a Man"
-                                 loading="lazy" />
-                            Ciao @User.Identity.Name
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Profilo", "Profilo", "Home", new { area = "" }, new { @class = "dropdown-item" })</li>
-                            <li><hr /></li>
-                            <li>@Html.ActionLink("Logout", "Logout", "Home", new { area = "" }, new { @class = "dropdown-item" })</li>
+                                @* Solo Admin *@
+                                if (User.IsInRole("Admin"))
+                                {
+                                    <li class="nav-item me-3 active">
+                                        @Html.ActionLink("Utenti", "Index", "Admin", new { area = "" }, new { @class = "nav-link" })
+                                    </li>
+                                }
+                            }
                         </ul>
-                    </li>
-                }
-            </ul>
+                    </div>
+                    <hr />
+                    <div class="offcanvas-body" style="margin-left: auto">
+                        <ul class="navbar-nav flex-row">
+                            @if (!User.Identity.IsAuthenticated)
+                            {
+                                <li class="nav-item me-3">
+                                    @Html.ActionLink("Login", "Login", "Home", new { area = "" }, new { @class = "nav-link" })
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle d-flex justify-content-center align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp"
+                                             class="rounded-circle mx-1"
+                                             height="22"
+                                             alt="Black and White Portrait of a Man"
+                                             loading="lazy" />
+                                        Ciao @User.Identity.Name
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>@Html.ActionLink("Profilo", "Profilo", "Home", new { area = "" }, new { @class = "dropdown-item" })</li>
+                                        <li><hr /></li>
+                                        <li>@Html.ActionLink("Logout", "Logout", "Home", new { area = "" }, new { @class = "dropdown-item" })</li>
+                                    </ul>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -119,10 +134,10 @@
                                         <input type="text" name="txtEmail" class="form-control" placeholder="La tua email" value="" />
                                     </div>
                                     <div class="form-group mb-1">
-                                        <input type="text" name="txtPhone" class="form-control" placeholder="Il tuo numero di telefono" value="" />
+                                        <input type="text" name="txtPhone" class="form-control" placeholder="Oggetto" value="" />
                                     </div>
                                     <div class="form-group mb-1">
-                                        <input type="submit" name="btnSubmit" class="btnContact" value="Invia Messaggio" />
+                                        <input type="submit" name="btnSubmit" class="btnContact" value="Invia" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
