@@ -3,30 +3,58 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="table-container">
 
-<button onclick="filtra()"> filtra </button>
+    <div class="p-3 px-5 table-container">
+        <div class="rounded" style="background-color: rgb(255, 255, 255, 0.92); ">
+
+            <h2 class="m-2">Vuoi adottare un animale?</h2>
+            <div class="p-4">
+                <p>I nostri animali:</p>
+                <div class="row row-cols-2 row-cols-md-3">
+
+                    @foreach (U5_W4_BuildWeek.Models.DbModels.AnimaliTipologia razza in ViewBag.Tipologie)
+                    {
+                        <div>
+                            <input type="checkbox" id="@razza.Id" />
+                            <label for="@razza.Id"> @razza.Tipologia</label> <br />
+                        </div>
+                    }
+
+                </div>
 
 
-@foreach (U5_W4_BuildWeek.Models.DbModels.AnimaliTipologia razza in ViewBag.Tipologie)
+                <div class="mt-3">
+
+                    <button class="btn btn-outline-dark" onclick="filtra()"> Cerca </button>
+
+                    @if (User.IsInRole("Admin") || User.IsInRole("Veterinario"))
+                    {
+                        <button class="btn btn-outline-dark" onclick="RicoveriList()"> Ottieni tutti i ricoveri </button>
+                    }
+
+                </div>
+
+            </div>
+
+
+            <div id="agg" class="row row-cols-1 row-cols-md-4 justify-content-between"></div>
+
+
+            <div id="main-tab" class="table-animali d-none">
+
+                <div class="header">Ricoveri attivi</div>
+
+                <table id="tab" class='table mb-0'>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+<</div>
+        @section scripts
 {
-    <input type="checkbox" id="@razza.Id" />
-    <label for="@razza.Id"> @razza.Tipologia</label>
-    <br>
-}
-
-@if (User.IsInRole("Admin") || User.IsInRole("Veterinario"))
-{
-    <button onclick="RicoveriList()"> Ottieni tutti i ricoveri </button>
-}
-
-<div id="agg"></div>
-<table id="tab" class='table d-none'>
-
-</table>
-
-@section scripts
-{
-        <script src="~/Scripts/MyScripts/RicoveriIndex.js"></script>
-}
+            <script src="~/Scripts/MyScripts/RicoveriIndex.js"></script>
+        }
 
