@@ -1,69 +1,67 @@
 ﻿@model IEnumerable<U5_W4_BuildWeek.Models.DbModels.Animali>
 
-@{
-    ViewBag.Title = "Index";
-}
 
-<h2>Index</h2>
+<div class="table-container">
+    <div class="aggiungi">
+        <a href="@Url.Action("RegistraAnimale")"><i class="fa-regular fa-square-plus add-icon"></i></a>
+    </div>
 
-<p>
-    @Html.ActionLink("Create New", "RegistraAnimale")
-</p>
+    <div class="table-animali">
+        <div class="header">Registro animali</div>
 
-<div class="table-animali">
-    <div class="header">Registro animali</div>
-
-    <table cellspacing="0">
-        <tr>
-            <th></th>
-            <th>Data registrazione</th>
-            <th>Data ricovero</th>
-            <th>Tipo</th>
-            <th>Nome</th>
-            <th>Colore</th>
-            <th>Data di nascita</th>
-            <th>Microchip</th>
-            <th>Proprietario</th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
+        <table>
             <tr>
-                <td>
-                    <img src="~/Content/Imgs/Animali/@item.Foto" alt="photo" />
-                </td>
-                <td>
-                    <p>@item.DataRegistrazione.ToShortDateString()</p>
-                </td>
-                <td>
-                    <p>@(item.DataInizioRicovero != null ? item.DataInizioRicovero.Value.ToShortDateString() : "-")</p>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AnimaliTipologia.Tipologia)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Colore)
-                </td>
-                <td>
-                    <p>@(item.DataNascita != null ? item.DataNascita.Value.ToShortDateString() : "-")</p>
-                </td>
-                <td>
-                    <p>@(item.Microchip != null ? item.Microchip : "-")</p>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Utenti.Nome)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "ModificaAnimale", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "DettaglioAnimale", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "EliminaAnimale", new { id = item.Id })
-                </td>
+                <th></th>
+                <th>Registrazione</th>
+                <th>Ricovero</th>
+                <th>Tipo</th>
+                <th>Nome</th>
+                <th>Colore</th>
+                <th>Data di nascita</th>
+                <th>Microchip</th>
+                <th>Proprietario</th>
+                <th></th>
             </tr>
-        }
 
-    </table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="~/Content/Imgs/Animali/@item.Foto" alt="photo" class="animal-picture" />
+                    </td>
+                    <td>
+                        <p>@item.DataRegistrazione.ToShortDateString()</p>
+                    </td>
+                    <td>
+                        <p>@(item.DataInizioRicovero != null ? item.DataInizioRicovero.Value.ToShortDateString() : "-")</p>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AnimaliTipologia.Tipologia)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Colore)
+                    </td>
+                    <td>
+                        <p>@(item.DataNascita != null ? item.DataNascita.Value.ToShortDateString() : "-")</p>
+                    </td>
+                    <td>
+                        <p>@(item.Microchip != null ? item.Microchip : "-")</p>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Utenti.Nome)
+                    </td>
+                    <td>
+
+                        <a href="@Url.Action("ModificaAnimale", new { id = item.Id })"><i class="fa-solid fa-pencil table-icon"></i></a>
+                        <a href="@Url.Action("DettaglioAnimale", new { id = item.Id })"><i class="fa-solid fa-magnifying-glass table-icon"></i></a>
+                        <a href="@Url.Action("EliminaAnimale", new { id = item.Id })"><i class="fa-solid fa-trash-can table-icon"></i></a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="pb-5"></div>
 </div>

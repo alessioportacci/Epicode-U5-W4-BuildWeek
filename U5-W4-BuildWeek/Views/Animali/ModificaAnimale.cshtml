@@ -6,96 +6,85 @@
 
 <h2>Modifica Animale</h2>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+<div class="wrapper fadeInDown">
 
-    <div class="form-horizontal">
 
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
-        @Html.HiddenFor(model => model.DataRegistrazione)
+    @using (Html.BeginForm("ModificaAnimale", "Animali", FormMethod.Post, new { id = "formContent", enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
 
-        <div class="form-group">
-            @Html.Label("DataRegistrazione", "Data registrazione", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.DataRegistrazione)
+
+            <p><span class="star">* </span>CAMPI RICHIESTI</p>
+
+            <div class="form-group">
+                <label for="DataRegistrazione" class="label-form">@Html.Raw("<strong>Data registrazione</strong>")</label>
                 <input class="form-control" type="text" value="@Model.DataRegistrazione.ToShortDateString()" readonly />
-                @Html.ValidationMessageFor(model => model.DataRegistrazione, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.Label("DataInizioRicovero", "Data inizio ricovero", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.DataInizioRicovero, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
                 @Html.ValidationMessageFor(model => model.DataInizioRicovero, "", new { @class = "text-danger" })
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="form-group">
+                <label for="DataInizioRicovero" class="label-form">@Html.Raw("<strong>Data inizio ricovero</strong>")</label>
+                @Html.TextBoxFor(model => model.DataInizioRicovero, "{0:yyyy-MM-dd}", new { type = "date" })
+                @Html.ValidationMessageFor(model => model.DataInizioRicovero, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="Nome" class="label-form">@Html.Raw("<strong>Nome</strong><span class='star'> *</span>")</label>
+                @Html.EditorFor(model => model.Nome)
                 @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.Label("FotoFile", "Foto", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="form-group">
+                <label for="FotoFile" class="label-form">@Html.Raw("<strong>Foto</strong>")</label>
                 <input type="file" name="FotoFile" />
                 @Html.ValidationMessageFor(model => model.FotoFile, "", new { @class = "text-danger" })
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Colore, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="form-group">
+                <label for="Colore" class="label-form">@Html.Raw("<strong>Colore</strong><span class='star'> *</span>")</label>
                 @Html.EditorFor(model => model.Colore, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Colore, "", new { @class = "text-danger" })
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.Label("DataNascita", "Data di nascita", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.DataNascita, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+            <div class="form-group">
+                <label for="DataNascita" class="label-form">@Html.Raw("<strong>Data di nascita</strong>")</label>
+                @Html.TextBoxFor(model => model.DataNascita, "{0:yyyy-MM-dd}", new { type = "date" })
                 @Html.ValidationMessageFor(model => model.DataNascita, "", new { @class = "text-danger" })
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Microchip, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="form-group">
+                <label for="Microchip" class="label-form">@Html.Raw("<strong>Numero microchip</strong>")</label>
                 @Html.EditorFor(model => model.Microchip, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Microchip, "", new { @class = "text-danger" })
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.Label("FkTipologia", "Tipologia*", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="form-group">
+                <label for="FkTipologia" class="label-form">@Html.Raw("<strong>Tipologia</strong><span class='star'> *</span>")</label>
                 @Html.DropDownListFor(model => model.FkTipologia, new SelectList(ViewBag.TipologieAnimali, "Value", "Text"), "Seleziona tipologia", new { htmlAttributes = new { @class = "form-control dropdown-menu" } })
                 @Html.ValidationMessageFor(model => model.FkTipologia, "", new { @class = "text-danger" })
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.Label("FkUtente", "Proprietario", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="form-group">
+                <label for="FkUtente" class="label-form">@Html.Raw("<strong>Proprietario</strong>")</label>
                 @Html.DropDownListFor(model => model.FkUtente, new SelectList(ViewBag.Clienti, "Value", "Text"), "Seleziona Proprietario", new { htmlAttributes = new { @class = "form-control dropdown-menu" } })
                 @Html.ValidationMessageFor(model => model.FkUtente, "", new { @class = "text-danger" })
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Modifica" class="btn btn-default" />
+                </div>
             </div>
         </div>
-    </div>
-}
+    }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
