@@ -2,6 +2,7 @@ namespace U5_W4_BuildWeek.Models.DbModels
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -22,6 +23,9 @@ namespace U5_W4_BuildWeek.Models.DbModels
         public DateTime DataRegistrazione { get; set; }
 
         public DateTime? DataInizioRicovero { get; set; }
+
+        [DefaultValue(false)]
+        public bool RicoveroAttivo { get; set; }
 
         [Required]
         [StringLength(70)]

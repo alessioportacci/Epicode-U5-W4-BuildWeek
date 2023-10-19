@@ -33,7 +33,16 @@
                         <p>@item.DataRegistrazione.ToShortDateString()</p>
                     </td>
                     <td>
-                        <p>@(item.DataInizioRicovero != null ? item.DataInizioRicovero.Value.ToShortDateString() : "-")</p>
+                        @if (item.DataInizioRicovero != null)
+                        {
+                            <p style='@if (!item.RicoveroAttivo) { @Html.Raw("color: lightgray !important"); }'>
+                                @item.DataInizioRicovero.Value.ToShortDateString()
+                            </p>
+                        }
+                        else
+                        {
+                            <p> - </p>
+                        }
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.AnimaliTipologia.Tipologia)

@@ -59,6 +59,9 @@ namespace U5_W4_BuildWeek.Controllers
                     animale.Foto = animale.FotoFile.FileName;
                 }
                 animale.DataRegistrazione = DateTime.Today;
+
+                animale.RicoveroAttivo = animale.DataInizioRicovero != null ? true : false;
+
                 db.Animali.Add(animale);
                 db.SaveChanges();
                 return RedirectToAction("Index");  
@@ -98,6 +101,7 @@ namespace U5_W4_BuildWeek.Controllers
             return View(animale);
         }
 
+
         public ActionResult EliminaAnimale(int id)
         {
             Animali animale = db.Animali.Find(id);
@@ -112,6 +116,22 @@ namespace U5_W4_BuildWeek.Controllers
                 db.SaveChanges();
             }
             return RedirectToAction("View");
+        }
+
+
+        [AllowAnonymous]
+        [Authorize]
+        public ActionResult Adotta(int id)
+        {
+            int utente = db.Utenti.Where(u => u.Username == User.Identity.Name).FirstOrDefault().Id;
+            Animali animale = db.Animali.Find(id);
+
+            animale.RicoveroAttivo = false;
+            animale.FkUtente = utente;
+            db.Entry(animale).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("DettaglioAnimale", new { id = id });
         }
 
         #region Get Clienti / Tipologie

@@ -141,6 +141,10 @@
     <Compile Include="Migrations\202310160925230_AggiornamentoUtenti.designer.cs">
       <DependentUpon>202310160925230_AggiornamentoUtenti.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202310190904133_AggiuntoRicoveroAttivo.cs" />
+    <Compile Include="Migrations\202310190904133_AggiuntoRicoveroAttivo.designer.cs">
+      <DependentUpon>202310190904133_AggiuntoRicoveroAttivo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ContattaciModel.cs" />
     <Compile Include="Models\DbModels\Animali.cs" />
@@ -292,6 +296,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202310160925230_AggiornamentoUtenti.resx">
       <DependentUpon>202310160925230_AggiornamentoUtenti.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310190904133_AggiuntoRicoveroAttivo.resx">
+      <DependentUpon>202310190904133_AggiuntoRicoveroAttivo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

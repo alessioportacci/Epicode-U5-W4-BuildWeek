@@ -83,5 +83,10 @@
     </dl>
 </div>
 
+@if(Model.RicoveroAttivo && User.Identity.IsAuthenticated)
+ {
+    <a href="@Url.Action("Adotta", new { id = Model.Id })">Adotta</a>
+ }
+
 
 @{Html.RenderAction("StoriaMedica", new {id=Model.Id});}

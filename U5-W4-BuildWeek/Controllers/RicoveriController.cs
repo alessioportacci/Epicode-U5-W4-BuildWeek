@@ -28,7 +28,7 @@ namespace U5_W4_BuildWeek.Controllers
             //Nel caso restituisca una lista null
             try
             {
-                animaliList = db.Animali.Where(a => a.DataInizioRicovero != null && Tipologie.Contains(a.FkTipologia)).ToList();
+                animaliList = db.Animali.Where(a => a.RicoveroAttivo && Tipologie.Contains(a.FkTipologia)).ToList();
             }
             catch { return Json(""); }
 
@@ -53,7 +53,7 @@ namespace U5_W4_BuildWeek.Controllers
         public JsonResult EstraiRicoveri()
         {
             List<RicoveriModel> ricoveri = new List<RicoveriModel>();
-            List<Animali> animaliList = db.Animali.Where(a => a.DataInizioRicovero != null).ToList();
+            List<Animali> animaliList = db.Animali.Where(a => a.RicoveroAttivo).ToList();
             foreach (Animali animale in animaliList)
                 ricoveri.Add(new RicoveriModel
                 {
