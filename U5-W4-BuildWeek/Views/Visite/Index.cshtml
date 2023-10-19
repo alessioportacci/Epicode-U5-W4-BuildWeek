@@ -39,13 +39,13 @@
                         Paziente
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.DataVisita)
+                        Data Visita
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.EsameObbiettivo)
+                        Esame
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.DescrizioneCura)
+                        Descrizione
                     </th>
                     <th></th>
                 </tr>
@@ -72,8 +72,8 @@
                             @Html.DisplayFor(modelItem => item.DescrizioneCura)
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "Edit", "Visite", new { area = "", id = item.Id }, null) |
-                            @Html.ActionLink("Delete", "Delete", "Visite", new { area = "", id = item.Id }, null)
+                            <a href="@Url.Action("Edit", new { id = item.Id })"><i class="fa-solid fa-pencil table-icon"></i></a>
+                            <a href="@Url.Action("Delete", new { id = item.Id })"><i class="fa-solid fa-trash-can table-icon"></i></a>
                         </td>
                     </tr>
                 }
