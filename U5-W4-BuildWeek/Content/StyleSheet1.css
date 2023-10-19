@@ -80,13 +80,6 @@
 #body-form .contact-form .contact-image {
   text-align: center;
 }
-#body-form .contact-form .contact-image img {
-  border-radius: 6rem;
-  width: 11%;
-  margin-top: -3%;
-  transform: rotate(29deg);
-}
-
 /* PAGINA HOME */
 /* FORM REGISTRA ANIMALE */
 /* STRUCTURE */
@@ -262,13 +255,6 @@ input[type=text] {
   padding: 1rem;
   text-align: center;
   text-transform: uppercase;
-}
-
-img {
-  border-radius: 50%;
-  height: 60px;
-  width: 60px;
-  object-fit: cover;
 }
 
 .table-animali {

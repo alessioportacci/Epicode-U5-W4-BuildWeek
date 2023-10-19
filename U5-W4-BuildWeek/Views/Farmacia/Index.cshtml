@@ -79,9 +79,8 @@
             $(document).ready(function () {
                 $(".acquista-link").click(function () {
                     var productId = $(this).data("id");
-
                     // Effettua una chiamata AJAX per ottenere la partial view "Acquista" e la carica nel modal
-                    $.get("Acquista?id=" + productId, function (data) {
+                    $.get("Farmacia/Acquista?id=" + productId, function (data) {
                         $("#acquista-partial-view").html(data);
                         $(".modal").modal("show");
                     });

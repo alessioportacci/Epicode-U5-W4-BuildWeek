@@ -31,7 +31,7 @@ namespace U5_W4_BuildWeek.Controllers
         public PartialViewResult StoriaMedica(int id)
         {
             ViewBag.Id = id;
-            return PartialView(db.Visite.Where(v => v.FkAnimale == id));
+            return PartialView(db.Visite.Where(v => v.FkAnimale == id).OrderByDescending(o => o.DataVisita));
         }
 
 
@@ -61,6 +61,7 @@ namespace U5_W4_BuildWeek.Controllers
                 animale.DataRegistrazione = DateTime.Today;
                 db.Animali.Add(animale);
                 db.SaveChanges();
+                return RedirectToAction("Index");  
             }
             return View();
         }
@@ -99,14 +100,18 @@ namespace U5_W4_BuildWeek.Controllers
 
         public ActionResult EliminaAnimale(int id)
         {
-            var animale = db.Animali.Find(id);
-
+            Animali animale = db.Animali.Find(id);
             if (animale != null)
             {
+                //Elmino tutte le visite
+                List<Visite> visite = db.Visite.Where(v => v.FkAnimale == id).ToList();
+                foreach(Visite visita in visite)
+                    db.Visite.Remove(visita);
+
                 db.Animali.Remove(animale);
                 db.SaveChanges();
             }
-            return View("Index");
+            return RedirectToAction("View");
         }
 
         #region Get Clienti / Tipologie

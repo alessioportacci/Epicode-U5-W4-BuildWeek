@@ -133,12 +133,9 @@ namespace U5_W4_BuildWeek.Controllers
         {
             if (ModelState.IsValid)
             {
-
-              
-
                 db.Ditte.Add(d);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ListaDitte");
             }
             return View();
         }
@@ -214,7 +211,7 @@ namespace U5_W4_BuildWeek.Controllers
 
         public JsonResult Armadietto(string nome)
         {
-            var localizzazione = db.Medicinali.Where(m => m.Nome == nome).FirstOrDefault();
+            var localizzazione = db.Medicinali.Where(m => m.Nome.Contains(nome)).FirstOrDefault();
 
             if (localizzazione != null)
             {

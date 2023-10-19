@@ -30,6 +30,7 @@ namespace U5_W4_BuildWeek.Controllers
         public ActionResult Acquista( int id, string codiceFiscale, string ricetta)
         {
             Medicinali medicinale = db.Medicinali.Find(id);
+            //Utenti user = db.Utenti.FirstOrDefault(u => u.Username == User.Identity.Name);
             Utenti user = db.Utenti.FirstOrDefault(u => u.CF == codiceFiscale);
             MedicinaliVendite vendita = new MedicinaliVendite
             {

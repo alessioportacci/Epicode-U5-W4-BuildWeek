@@ -36,8 +36,7 @@
                         <th>Prodotto venduto</th>
                     </tr>
                 </thead>
-                <tbody >
-                    <tr id="dettagliVenditaVendite" > </tr>
+                <tbody id="dettagliVenditaVendite">
                 </tbody>
             </table>
         </div>
@@ -50,10 +49,7 @@
                         <th>Prodotto venduto</th>
                     </tr>
                 </thead>
-                <tbody  class="text-center">
-                    <tr id="dettagliVenditaCF">
-
-                    </tr>
+                <tbody  class="text-center" id="dettagliVenditaCF">
                 </tbody>
             </table>
         </div>
@@ -79,9 +75,11 @@
 
                         if (data.length > 0) {
                             $.each(data, function (index, vendita) {
-                            
-                                dettagliVendita.append('<td>' + vendita.Data + '</td>');
-                                dettagliVendita.append('<td>' + vendita.Medicina + '</td>');
+
+                                dettagliVendita.append('<tr>' +
+                                                            '<td>' + vendita.Data + '</td>' +
+                                                            '<td>' + vendita.Medicina + '</td>' +
+                                                        '</tr>');
                             
                             });
                         } else {
@@ -107,8 +105,10 @@
                         if (data.length > 0) {
                             $.each(data, function (index, vendita) {
                                
-                                dettagliVendita.append('<td>' + vendita.Data + '</td>');
-                                dettagliVendita.append('<td>' + vendita.Medicina + '</td>');
+                                dettagliVendita.append('<tr>' +
+                                                            '<td>' + vendita.Data + '</td>' +
+                                                            '<td>' + vendita.Medicina + '</td>' +
+                                                       '</tr>');
                                
                             });
                         } else {

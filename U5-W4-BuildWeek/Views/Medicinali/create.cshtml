@@ -34,7 +34,7 @@
 
             <div class="form-group">
                 <label for="Costo" class="label-form"><strong>Costo</strong><span class="star"> *</span></label>
-                @Html.EditorFor(model => model.Costo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Costo, new { htmlAttributes = new { @class = "form-control", type= "Number" } })
                 @Html.ValidationMessageFor(model => model.Costo, "", new { @class = "text-danger" })
             </div>
 
