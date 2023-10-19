@@ -1,6 +1,6 @@
 ﻿function filtra() {
 
-    $("#tab").empty()
+    /*$("#tab").empty()*/
     $("#main-tab").addClass("d-none")
 
 
@@ -25,7 +25,7 @@
                 $.each(animali, function (i, item) {
                     let card =
                         "<div class='p-2 px-3'>" +
-                            "<div class='card' style='width:'>" +
+                            "<div class='card' style='width: 18rem'>" +
                                 "<img src ='./Content/Imgs/Animali/" + item.Foto + "' class='card-img-top w-100' alt = '..'>" +
                                 "<div class='card-body'> " +
                                     "<h5 class='card-title'>" + item.Nome + "</h5> " +
