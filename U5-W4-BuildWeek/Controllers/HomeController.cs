@@ -103,6 +103,48 @@ namespace U5_W4_BuildWeek.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Profilo()
+        {
+
+           Utenti user = db.Utenti.FirstOrDefault(u => u.Username == User.Identity.Name);
+            if (user == null)
+            {
+                return View("Index");
+            }
+            return View(user);
+        }
+
+      
+
+        [HttpPost]
+        public ActionResult Profilo(Utenti updatedUser)
+        {
+            if (ModelState.IsValid)
+            {
+               
+                Utenti user = db.Utenti.FirstOrDefault(u => u.Username == User.Identity.Name);
+
+                user.Username = updatedUser.Username;
+                user.Password = updatedUser.Password;
+                user.Nome = updatedUser.Nome;
+                user.CF = updatedUser.CF;
+                user.Telefono = updatedUser.Telefono;
+                user.Email = updatedUser.Email;
+           
+
+               
+                db.SaveChanges();
+
+             
+                return RedirectToAction("Logout");
+            }
+
+         
+            return View(updatedUser);
+        }
+
+
+
         #endregion
 
     }

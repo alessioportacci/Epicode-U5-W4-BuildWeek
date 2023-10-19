@@ -2,78 +2,81 @@
 
 @{
     ViewBag.Title = "Elenco dei Medicinali";
-    Layout = "~/Views/Shared/_Layout.cshtml"; // Assicurati che sia incluso un layout appropriato
-}
 
-<div class="container my-3">
-    <div class="row">
-        <div class="col-md-2">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="text-center">Azioni</h4>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <a href="@Url.Action("Create")" class="btn btn-light btn-block ">Nuovo  </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="@Url.Action("ListaDitte")" class="btn btn-light btn-block">Fornitori</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="@Url.Action("Cerca")" class="btn btn-light btn-block">Cerca</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="@Url.Action("Vendite")" class="btn btn-light btn-block">Vendite</a>
-                        </li>
-                    </ul>
+}
+<div class="table-1 mb-5">
+    <div class="container my-3 ">
+
+        <div class="row">
+            <div class="col-md-2 mt-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="text-center">Azioni</h4>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <a href="@Url.Action("Create")" class="btn btn-light btn-block ">Nuovo  </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="@Url.Action("ListaDitte")" class="btn btn-light btn-block">Fornitori</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="@Url.Action("Cerca")" class="btn btn-light btn-block">Cerca</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="@Url.Action("Vendite")" class="btn btn-light btn-block">Vendite</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-10">
-            <div class="card shadow">
-                <div class="card-header">
-                    <h2 class="text-center">@ViewBag.Title</h2>
-                </div>
-                <div class="card-body">
-                    <div class="text-right mb-3">
-                        <table class="table table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Nome</th>
-                                    <th>Costo</th>
-                                    <th>Tipologia</th>
-                                    <th>Modifica</th>
-                                    <th>Elimina</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var m in Model)
-                                {
+            <div class="col-md-10 mt-4">
+                <div class="card shadow">
+                    <div class="card-header">
+                        <h2 class="text-center">@ViewBag.Title</h2>
+                    </div>
+                    <div class="card-body ">
+                        <div class="text-right mb-3">
+                            <table class="table table-striped table-hover ">
+                                <thead>
                                     <tr>
-                                        <td>@m.Nome</td>
-                                        <td>@string.Format("{0:C}", m.Costo)</td>
-                                        <td>
-                                            @if (m.Medicinale)
-                                            {
-                                                <p>Medicinale</p>
-                                            }
-                                            else
-                                            {
-                                                <p>Alimento</p>
-                                            }
-                                        </td>
-                                        <td>
-                                            <a href="@Url.Action("Modifica", new { id = m.Id })" class="btn btn-warning">Modifica</a>
-                                        </td>
-                                        <td>
-                                            <a href="@Url.Action("Delete", new { id = m.Id })" class="btn btn-danger">Elimina</a>
-                                        </td>
+                                        <th>Nome</th>
+                                        <th>Costo</th>
+                                        <th>Tipologia</th>
+                                        <th>Modifica</th>
+                                        <th>Elimina</th>
                                     </tr>
-                                }
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach (var m in Model)
+                                    {
+                                        <tr>
+                                            <td>@m.Nome</td>
+                                            <td>@string.Format("{0:C}", m.Costo)</td>
+                                            <td>
+                                                @if (m.Medicinale)
+                                                {
+                                                    <p>Medicinale</p>
+                                                }
+                                                else
+                                                {
+                                                    <p>Alimento</p>
+                                                }
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("Modifica", new { id = m.Id })" class="btn btn-warning">Modifica</a>
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("Delete", new { id = m.Id })" class="btn btn-danger">Elimina</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 </div>

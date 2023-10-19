@@ -4,73 +4,82 @@
     ViewBag.Title = "Index";
 }
 
-<h3> Filtri </h3>
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    @Html.Label("Microchip", new { @class = "d-block" })
-    @Html.Editor("Microchip", new { htmlAttributes = new { @class = "from-control", @Placeholder = "Inserire Microchip" } })
-
-    @Html.Label("Nome", "Nome Animale" , new { @class = "d-block" })
-    @Html.Editor("Nome", new { htmlAttributes = new { @class = "from-control", @Placeholder = "Inserire nome animale" } })
-
-    <input type="submit" value="Cerca" class="btn btn-primary d-block" />
-}
-
-<h2>Lista Visite</h2>
-
-@*<p>
-        @Html.ActionLink("Aggiungi una visita", "Create")
-    </p>*@
-<table class="table">
-    <tr>
-        <th>
-            Paziente
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataVisita)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EsameObbiettivo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DescrizioneCura)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                <a href="@Url.Action("DettaglioAnimale", "Animali", new { area = "", id = item.Animali.Id })">
-                    @if (item.Animali.Microchip != null || item.Animali.Microchip != null)
-                    {
-                        <span> @item.Animali.Microchip - </span>
-                    }
-                    @Html.DisplayFor(modelItem => item.Animali.Nome)
-                </a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataVisita)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EsameObbiettivo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DescrizioneCura)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", "Visite", new { area = "", id = item.Id }, null) |
-                @Html.ActionLink("Delete", "Delete", "Visite", new { area = "", id = item.Id }, null)
-            </td>
-        </tr>
-    }
+<div class="p-3 px-5 table-container">
 
 
-</table>
-<p>
-    @Html.ActionLink("Aggiungi una visita", "Create")
-</p>
+    <div class="d-flex justify-content-center  mt-3">
+        <div class="card" style="width: 19rem;">
+            <div class="card-body text-center">
+                <h3> Filtri </h3>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.Label("Microchip", new { @class = "d-block" })
+                    @Html.Editor("Microchip", new { htmlAttributes = new { @class = "from-control", @Placeholder = "Inserire Microchip" } })
+
+                    @Html.Label("Nome", "Nome Animale", new { @class = "d-block" })
+                    @Html.Editor("Nome", new { htmlAttributes = new { @class = "from-control", @Placeholder = "Inserire nome animale" } })
+
+                    <input type="submit" value="Cerca" class="btn btn-primary m-1" />
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="table-visite">
+
+        <div class="headV">Visite</div>
+
+        <table>
+            <tbody>
+                <tr>
+                    <th>
+                        Paziente
+                    </th>
+                    <th>
+                        Data Visita
+                    </th>
+                    <th>
+                        Esame
+                    </th>
+                    <th>
+                        Descrizione
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <a href="@Url.Action("DettaglioAnimale", "Animali", new { area = "", id = item.Animali.Id })">
+                                @if (item.Animali.Microchip != null || item.Animali.Microchip != null)
+                                {
+                                    <span> @item.Animali.Microchip - </span>
+                                }
+                                @Html.DisplayFor(modelItem => item.Animali.Nome)
+                            </a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataVisita)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EsameObbiettivo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DescrizioneCura)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Edit", new { id = item.Id })"><i class="fa-solid fa-pencil table-icon"></i></a>
+                            <a href="@Url.Action("Delete", new { id = item.Id })"><i class="fa-solid fa-trash-can table-icon"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+
+</div>

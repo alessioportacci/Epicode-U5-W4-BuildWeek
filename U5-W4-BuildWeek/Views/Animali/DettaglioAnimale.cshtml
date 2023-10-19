@@ -4,89 +4,130 @@
     ViewBag.Title = "DettaglioAnimale";
 }
 
-<h2>DettaglioAnimale</h2>
+<h1 class="m-3">
+    <i class="fa fa-paw" aria-hidden="true"></i>
+    @Model.Nome
+</h1>
 
-<div>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.AnimaliTipologia.Tipologia)
-        </dt>
+<div class="p-3 px-5 table-container">
+    <div class="row align-items-center rounded" style="background-color: rgb(255, 255, 255, 0.92); ">
+        <div class="col-12 col-md-4">
+            <img src="~/Content/Imgs/Animali/@Model.Foto" class="w-100" />
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.AnimaliTipologia.Tipologia)
-        </dd>
+        @* Info *@
+        <div class="col-12 col-md-8 ml-5 fs-5">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Utenti.Nome)
-        </dt>
+            <div class="row row-cols-1 row-cols-2 mx-4 mb-4">
 
-        <dd>
-            @Html.DisplayFor(model => model.Utenti.Nome)
-        </dd>
+                @* Padrone *@
+                <div>
+                    <div class="fw-bold">
+                        Padrone
+                    </div>
+                    <div>
+                        @if (Model.FkUtente != null)
+                        {
+                            @Html.DisplayFor(model => model.Utenti.Nome)
+                        }
+                        else
+                        {
+                            if (Model.RicoveroAttivo && User.Identity.IsAuthenticated)
+                            {
+                                <span> Questo animale non ha un padrone, <a href="@Url.Action("Adotta", new { id = Model.Id })">adottalo!</a> </span>
+                            }
+                        }
+                    </div>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DataRegistrazione)
-        </dt>
+                @* Specie *@
+                <div>
+                    <div class="fw-bold">
+                        Specie
+                    </div>
+                    <div>
+                        @Html.DisplayFor(model => model.AnimaliTipologia.Tipologia)
+                    </div>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.DataRegistrazione)
-        </dd>
+                @* Microchip *@
+                <div>
+                    <div class="fw-bold">
+                        @Html.DisplayNameFor(model => model.Microchip)
+                    </div>
+                    <div>
+                        @if (Model.Microchip == "" || Model.Microchip == null)
+                        {
+                            <span> Non presente </span>
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(model => model.Microchip)
+                        }
+                    </div>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DataInizioRicovero)
-        </dt>
+                @* Colore *@
+                <div>
+                    <div class="fw-bold">
+                        @Html.DisplayNameFor(model => model.Colore)
+                    </div>
+                    <div>
+                        @Html.DisplayFor(model => model.Colore)
+                    </div>
+                </div>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.DataInizioRicovero)
-        </dd>
+            <div class="row row-cols-1 row-cols-2 mx-4 mb-4">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
+                @* Registrazione *@
+                <div>
+                    <div class="fw-bold">
+                        Data di registrazione
+                    </div>
+                    <div>
+                        @Html.DisplayFor(model => model.DataRegistrazione)
+                    </div>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
+                @* Nascita *@
+                <div>
+                    <div class="fw-bold">
+                        Data di nascita (o presunta)
+                    </div>
+                    <div>
+                        @Html.DisplayFor(model => model.DataNascita.Value)
+                    </div>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Foto)
-        </dt>
+                @* Ricovero *@
+                @if (Model.DataInizioRicovero != null)
+                {
+                    <div>
+                        <div class="fw-bold">
+                            Data inizio ricovero
+                        </div>
+                        <div>
+                            @Html.DisplayFor(model => model.DataInizioRicovero)
+                        </div>
+                    </div>
+                }
 
-        <dd>
-            @Html.DisplayFor(model => model.Foto)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Colore)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Colore)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DataNascita)
-        </dt>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.DataNascita)
-        </dd>
+        </div>
+    </div>
+    @* Foto *@
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Microchip)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Microchip)
-        </dd>
-
-    </dl>
 </div>
 
-@if(Model.RicoveroAttivo && User.Identity.IsAuthenticated)
- {
-    <a href="@Url.Action("Adotta", new { id = Model.Id })">Adotta</a>
- }
+
+
+
+
 
 
 @{Html.RenderAction("StoriaMedica", new {id=Model.Id});}
