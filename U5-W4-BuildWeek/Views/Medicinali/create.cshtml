@@ -3,108 +3,48 @@
 @{
     ViewBag.Title = "Create";
 }
+<section class="form-container">
+    <h2 class="titolo">Registra Medcinale</h2>
 
-<div class="container my-3">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card shadow">
-                <div class="card-header">
-                    <h2>Create Medicinale</h2>
-                </div>
-                <div class="card-body">
-                    @using (Html.BeginForm())
-                    {
-                        @Html.AntiForgeryToken()
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="wrapper fadeInDown">
 
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label" })
-                            @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
-                        </div>
+        @using (Html.BeginForm("Create", "Medicinali", FormMethod.Post, new { id = "formContent", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
 
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Medicinale, htmlAttributes: new { @class = "control-label" })
-                            <div class="checkbox">
-                                @Html.EditorFor(model => model.Medicinale)
-                                @Html.ValidationMessageFor(model => model.Medicinale, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Costo, htmlAttributes: new { @class = "control-label" })
-                            @Html.EditorFor(model => model.Costo, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Costo, "", new { @class = "text-danger" })
-                        </div>
+            <p><span class="star">* </span>CAMPI RICHIESTI</p>
 
-                       
-
-                        <div class="form-group">
-                            <div class="text-right">
-                                <input type="submit" value="Create" class="btn btn-primary mt-2" />
-                            </div>
-                        </div>
-                    }
-                </div>
-                <div class="card-footer text-right">
-                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
-                </div>
+            <div class="form-group">
+                <label for="Nome" class="label-form"><strong>Nome</strong><span class="star"> *</span></label>
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
             </div>
-        </div>
-    </div>
-</div>
-@model U5_W4_BuildWeek.Models.DbModels.Medicinali
 
-@{
-    ViewBag.Title = "Create";
-}
+            <div class="form-group">
+                @Html.LabelFor(model => model.Medicinale, htmlAttributes: new { @class = "control-label " })
 
-<div class="container my-3">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card shadow">
-                <div class="card-header">
-                    <h2>Create Medicinale</h2>
+                <div class="checkbox text-center">
+                    @Html.EditorFor(model => model.Medicinale)
+                    @Html.ValidationMessageFor(model => model.Medicinale, "", new { @class = "text-danger" })
                 </div>
-                <div class="card-body">
-                    @using (Html.BeginForm())
-                    {
-                        @Html.AntiForgeryToken()
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label" })
-                            @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Medicinale, htmlAttributes: new { @class = "control-label" })
-                            <div class="checkbox">
-                                @Html.EditorFor(model => model.Medicinale)
-                                @Html.ValidationMessageFor(model => model.Medicinale, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Costo, htmlAttributes: new { @class = "control-label" })
-                            @Html.EditorFor(model => model.Costo, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Costo, "", new { @class = "text-danger" })
-                        </div>
-
-                       
-
-                        <div class="form-group">
-                            <div class="text-right">
-                                <input type="submit" value="Create" class="btn btn-primary mt-2" />
-                            </div>
-                        </div>
-                    }
-                </div>
-                <div class="card-footer text-right">
-                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
-                </div>
             </div>
-        </div>
+
+            <div class="form-group">
+                <label for="Costo" class="label-form"><strong>Costo</strong><span class="star"> *</span></label>
+                @Html.EditorFor(model => model.Costo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Costo, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Registra medicinale" class="btn btn-primary my-3" />
+            </div>
+
+            <div class="form-group">
+                @Html.ActionLink("Torna indietro", "index", null, new { @class = "backLink" })
+            </div>
+        }
     </div>
-</div>
+</section>
