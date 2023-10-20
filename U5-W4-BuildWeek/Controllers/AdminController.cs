@@ -52,6 +52,23 @@ namespace U5_W4_BuildWeek.Controllers
        public ActionResult Delete(int id)
         {
             Utenti utenti = db.Utenti.Find(id);
+
+            //Cancella vendite
+            List<MedicinaliVendite> Vendite = db.MedicinaliVendite.Where(v => v.FkUtente == id).ToList();
+            foreach (MedicinaliVendite ordine in Vendite)
+                db.MedicinaliVendite.Remove(ordine);
+
+            //Cancella animali
+            List<Animali> Animali = db.Animali.Where(a => a.FkUtente == id).ToList();
+            foreach (Animali animale in Animali)
+            {
+                List<Visite> Visite = db.Visite.Where(vi => vi.FkAnimale == animale.Id).ToList();
+                //Cancella visita
+                foreach (Visite visita in Visite)
+                    db.Visite.Remove(visita);
+                db.Animali.Remove(animale);
+            }
+
             db.Utenti.Remove(utenti);
             db.SaveChanges();
 

@@ -62,6 +62,11 @@ namespace U5_W4_BuildWeek.Controllers
 
             if (tipologia != null)
             {
+                //Trovo gli animali di quella tipologia e li cancello
+                List<Animali> Animali = db.Animali.Where(x => x.FkTipologia == id).ToList();
+                foreach (Animali animale in Animali)
+                    db.Animali.Remove(animale);
+
                 db.AnimaliTipologia.Remove(tipologia);
                 db.SaveChanges();
             }
