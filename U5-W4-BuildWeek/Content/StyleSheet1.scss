@@ -210,8 +210,30 @@
 }
 /* PAGINA HOME */
 
+/* BUTTON */
 
+.siteButton {
+    background-color: #56baed;
+    border: none;
+    color: white;
+    padding: 15px 80px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 13px;
+    box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+    border-radius: 5px 5px 5px 5px;
+    margin: 5px 20px 40px 20px;
+}
 
+.siteButton:hover {
+    background-color: #39ace7;
+}
+
+.siteButton:active {
+    transform: scale(0.95);
+}
 
 /* FORM REGISTRA ANIMALE */
 
@@ -521,3 +543,93 @@ table {
     }
 }
 
+/* TABELLA RICOVERI */
+
+.table-ricoveri {
+    font-family: "Poppins", sans-serif;
+    border-radius: 10px 10px 10px 10px;
+    background: #fff;
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    max-width: calc(100% - 2em);
+    margin: 0 auto 0 auto;
+    overflow: hidden;
+    width: 90%;
+}
+
+/* CHECKBOX */
+
+.cb-container {
+    background: #ebf5fc;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px 0 10px 0;
+
+    .iconUl {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 0;
+        padding: 0 10px;
+
+        .cb-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        p {
+            font-family: "Poppins", sans-serif;
+            text-transform: uppercase;
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+    }
+
+    .siteButton {
+        padding: 6px 50px;
+        margin: 10px;
+    }
+
+    & li {
+        position: relative;
+        list-style: none;
+        text-align: center;
+        margin: 0px 15px 5px 15px;
+
+        & label {
+            position: relative;
+            cursor: pointer;
+
+            & input[type="checkbox"] {
+                position: absolute;
+                opacity: 0;
+            }
+
+            & :checked ~ .icon-box {
+                box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 1), inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+
+                & .fa {
+                    transform: scale(0.95);
+                }
+            }
+
+            & .icon-box {
+                width: 60px;
+                height: 60px;
+                background: #ebf5fc;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                box-shadow: -2px -2px 5px rgba(255, 255, 255, 1), 3px 3px 5px rgba(0, 0, 0, 0.1);
+                border-radius: 10px;
+
+                & .fa {
+                    font-size: 30px;
+                    color: #6a9bd8;
+                }
+
+                .icon {
+                    font-size: xx-large;
+                }
+            }
+        }
+    }
+}

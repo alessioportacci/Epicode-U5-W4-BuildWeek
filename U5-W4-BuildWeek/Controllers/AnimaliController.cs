@@ -94,6 +94,10 @@ namespace U5_W4_BuildWeek.Controllers
 
                     animale.Foto = animale.FotoFile.FileName;
                 }
+                if (animale.DataInizioRicovero != null)
+                {
+                    animale.RicoveroAttivo = true;
+                }
                 db.Entry(animale).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
