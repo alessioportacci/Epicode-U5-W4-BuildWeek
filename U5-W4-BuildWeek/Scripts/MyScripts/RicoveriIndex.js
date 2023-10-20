@@ -25,8 +25,8 @@
                 $.each(animali, function (i, item) {
                     let card =
                         "<div class='p-2 px-3'>" +
-                            "<div class='card' style='width: 18rem'>" +
-                                "<img src ='./Content/Imgs/Animali/" + item.Foto + "' class='card-img-top w-100' alt = '..'>" +
+                            "<div class='card' style=''>" +
+                        "<img src ='./Content/Imgs/Animali/" + item.Foto + "' class='card-img-top w-100' alt = '..' style='height: 18rem; object-fit: cover;'>" +
                                 "<div class='card-body'> " +
                                     "<h5 class='card-title'>" + item.Nome + "</h5> " +
                                     "<p class='card-text'>" + item.Colore + "</p>" +
